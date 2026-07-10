@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>keesara.city — homepage design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal-900:#0b3d3a; --teal-700:#0f6e56; --teal-600:#137a63; --teal-100:#e1f5ee;
+    --amber-600:#ba7517; --amber-500:#d68f2c; --amber-100:#faeeda;
+    --ink:#1c1f1e; --ink-soft:#4a4f4d; --ink-mute:#7a7f7c;
+    --paper:#faf9f5; --card:#ffffff; --line:#e7e4da;
+    --radius:12px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Poppins',sans-serif; background:var(--paper); color:var(--ink); line-height:1.55;}
+  a{color:inherit; text-decoration:none;}
+  img{display:block; width:100%; height:100%; object-fit:cover;}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 24px;}
+  .eyebrow{font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--teal-700);}
+
+  /* Nav */
+  header{position:sticky; top:0; background:rgba(250,249,245,.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--line); z-index:10;}
+  nav{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:1160px; margin:0 auto; gap:20px;}
+  .logo{font-weight:700; font-size:20px; color:var(--teal-900); display:flex; align-items:center; gap:8px;}
+  .logo .dot{width:9px; height:9px; border-radius:50%; background:var(--amber-500); display:inline-block;}
+  .nav-links{display:flex; gap:28px; font-size:14px; font-weight:500; color:var(--ink-soft);}
+  .nav-actions{display:flex; gap:10px; align-items:center;}
+  .btn{padding:9px 18px; border-radius:8px; font-size:14px; font-weight:600; border:1px solid var(--line); cursor:pointer;}
+  .btn-primary{background:var(--teal-700); color:#fff; border-color:var(--teal-700);}
+  .btn-ghost{background:transparent; color:var(--teal-900);}
+
+  /* Hero */
+  .hero{padding:64px 24px 48px; text-align:center;}
+  .hero h1{font-size:40px; font-weight:700; color:var(--teal-900); max-width:720px; margin:14px auto 12px; line-height:1.2;}
+  .hero p{font-size:16px; color:var(--ink-soft); max-width:520px; margin:0 auto 28px;}
+  .search-bar{max-width:560px; margin:0 auto; display:flex; background:var(--card); border:1px solid var(--line); border-radius:10px; padding:6px; box-shadow:0 1px 2px rgba(0,0,0,.04);}
+  .search-bar input{flex:1; border:none; outline:none; padding:10px 14px; font-family:inherit; font-size:14px; background:transparent;}
+  .search-bar button{background:var(--amber-500); color:#3a2200; border:none; border-radius:7px; padding:10px 20px; font-weight:600; font-size:14px; cursor:pointer;}
+  .stat-row{display:flex; justify-content:center; gap:36px; margin-top:32px; flex-wrap:wrap;}
+  .stat{text-align:center;}
+  .stat b{display:block; font-size:22px; color:var(--teal-900);}
+  .stat span{font-size:12px; color:var(--ink-mute);}
+
+  /* Section heading */
+  section{padding:48px 24px;}
+  .section-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:22px; max-width:1160px; margin-left:auto; margin-right:auto;}
+  .section-head h2{font-size:24px; font-weight:700; color:var(--teal-900);}
+  .section-head a{font-size:13px; font-weight:600; color:var(--teal-700);}
+
+  /* Highlights */
+  .highlights-band{background:var(--teal-900); color:#fff;}
+  .highlights-band .eyebrow{color:var(--amber-500);}
+  .highlights-band .section-head h2{color:#fff;}
+  .highlights-band .section-head p{color:#cfe3de; font-size:14px; margin-top:6px;}
+  .hi-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; max-width:1160px; margin:0 auto;}
+  .hi-card{background:#0f4a44; border-radius:var(--radius); overflow:hidden;}
+  .hi-card .img{height:150px; background:#0a332f;}
+  .hi-card .body{padding:14px 16px 18px;}
+  .hi-card h3{font-size:15px; font-weight:600; margin-bottom:6px;}
+  .hi-card p{font-size:12.5px; color:#bcd6d0; line-height:1.5;}
+
+  /* Ad banner */
+  .ad-banner{max-width:1160px; margin:0 auto; background:var(--amber-100); border:1px dashed var(--amber-600); border-radius:var(--radius); padding:18px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .ad-banner .tag{font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--amber-600); background:#fff; padding:3px 8px; border-radius:5px; margin-bottom:6px; display:inline-block;}
+  .ad-banner h4{font-size:16px; font-weight:600; color:var(--ink);}
+  .ad-banner p{font-size:13px; color:var(--ink-soft);}
+
+  /* Two column: news + journal */
+  .split{max-width:1160px; margin:0 auto; display:grid; grid-template-columns:1.6fr 1fr; gap:36px;}
+  .feed-item{display:flex; gap:14px; padding:16px 0; border-bottom:1px solid var(--line);}
+  .avatar{width:38px; height:38px; border-radius:50%; background:var(--teal-100); color:var(--teal-700); font-weight:600; font-size:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .feed-item h4{font-size:15px; font-weight:600; margin-bottom:4px;}
+  .feed-item .meta{font-size:12px; color:var(--ink-mute); margin-bottom:6px;}
+  .badge{font-size:10.5px; font-weight:600; padding:2px 8px; border-radius:20px;}
+  .badge-verified{background:var(--teal-100); color:var(--teal-700);}
+  .badge-unverified{background:#f1efe8; color:var(--ink-mute);}
+  .feed-item .stats{display:flex; gap:14px; font-size:12px; color:var(--ink-mute); margin-top:8px;}
+
+  .journal-card{margin-bottom:18px; padding-bottom:18px; border-bottom:1px solid var(--line);}
+  .journal-card .tag2{font-family:'Merriweather',serif; font-style:italic; font-size:11px; color:var(--amber-600); margin-bottom:6px;}
+  .journal-card h4{font-family:'Merriweather',serif; font-size:17px; font-weight:700; line-height:1.35; margin-bottom:6px;}
+  .journal-card p{font-size:13px; color:var(--ink-soft); font-family:'Merriweather',serif;}
+  .journal-card .byline{font-size:11px; color:var(--ink-mute); margin-top:8px;}
+
+  /* Directory */
+  .cat-chips{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px; max-width:1160px; margin-left:auto; margin-right:auto;}
+  .chip{font-size:13px; font-weight:500; padding:7px 16px; border-radius:20px; border:1px solid var(--line); background:var(--card); color:var(--ink-soft);}
+  .chip.active{background:var(--teal-700); color:#fff; border-color:var(--teal-700);}
+  .dir-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; max-width:1160px; margin:0 auto;}
+  .biz-card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; position:relative;}
+  .biz-card .ribbon{position:absolute; top:10px; left:10px; background:var(--amber-500); color:#3a2200; font-size:10px; font-weight:700; padding:3px 9px; border-radius:5px; z-index:2;}
+  .biz-card .img{height:110px; background:var(--teal-100);}
+  .biz-card .body{padding:14px 16px;}
+  .biz-card h4{font-size:14px; font-weight:600; margin-bottom:3px;}
+  .biz-card .cat{font-size:11.5px; color:var(--teal-700); margin-bottom:6px;}
+  .biz-card .rating{font-size:12px; color:var(--ink-mute);}
+
+  /* CTA */
+  .cta{background:var(--teal-700); color:#fff; text-align:center; border-radius:16px; max-width:1160px; margin:0 auto; padding:44px 24px;}
+  .cta h2{font-size:24px; font-weight:700; margin-bottom:10px;}
+  .cta p{font-size:14px; color:#cfe3de; margin-bottom:22px;}
+  .cta .btn-primary{background:var(--amber-500); color:#3a2200; border-color:var(--amber-500);}
+
+  footer{padding:40px 24px 30px; border-top:1px solid var(--line); margin-top:20px;}
+  .foot-grid{max-width:1160px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px; font-size:13px; color:var(--ink-mute);}
+
+  @media(max-width:860px){
+    .hi-grid, .dir-grid{grid-template-columns:repeat(2,1fr);}
+    .split{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo"><span class="dot"></span>keesara.city</div>
+    <div class="nav-links">
+      <a href="#directory">Directory</a>
+      <a href="#journal">Journal</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#">Events</a>
+    </div>
+    <div class="nav-actions">
+      <a class="btn btn-ghost" href="#">Post news</a>
+      <a class="btn btn-primary" href="#">Login</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">Keesara, Telangana — local & unfiltered</div>
+  <h1>Everything Keesara. News, businesses, and neighbors — in one place.</h1>
+  <p>The local journal and business directory built for Keesara, by Keesara.</p>
+  <div class="search-bar">
+    <input type="text" placeholder="Search businesses, news, or “plumber near ORR exit 8”">
+    <button>Search</button>
+  </div>
+  <div class="stat-row">
+    <div class="stat"><b>300+</b><span>businesses listed</span></div>
+    <div class="stat"><b>16</b><span>villages covered</span></div>
+    <div class="stat"><b>1,200+</b><span>residents on keesara.city</span></div>
+  </div>
+</section>
+
+<section class="highlights-band" id="highlights">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">Know your town</div>
+      <h2>Highlights of Keesara</h2>
+      <p>The landmarks, geography and growth that make Keesara worth covering.</p>
+    </div>
+    <a href="#">See full guide →</a>
+  </div>
+  <div class="hi-grid">
+    <div class="hi-card">
+      <div class="img"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Keesaragutta_temple_view_from_ruins_01.JPG" alt="Keesaragutta temple view from the ruins"></div>
+      <div class="body">
+        <h3>Sri Ramalingeshwara Swamy Temple</h3>
+        <p>An ancient hilltop temple at Keesaragutta with 101 shivalingams, said to be installed by Lord Hanuman. Major draw during Maha Shivaratri.</p>
+      </div>
+    </div>
+    <div class="hi-card">
+      <div class="img"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/A_Semi_ruined_temple_at_Keesaragutta.JPG" alt="Ruins near Keesaragutta temple"></div>
+      <div class="body">
+        <h3>Vishnukundin-era ruins</h3>
+        <p>Excavations near the temple uncovered brick structures and Jain Tirthankara idols dating to the 4th–5th century — real archaeological weight.</p>
+      </div>
+    </div>
+    <div class="hi-card">
+      <div class="img"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hanuman_Statue_1.JPG" alt="Hanuman statue monument in Keesara"></div>
+      <div class="body">
+        <h3>Hanuman monument</h3>
+        <p>A landmark statue in Keesara village, tied to the town's naming and its deep Ramayana-era temple lore.</p>
+      </div>
+    </div>
+    <div class="hi-card">
+      <div class="img"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Outer_Ring_Road,Hyderabad.jpg" alt="Hyderabad Outer Ring Road near Keesara"></div>
+      <div class="body">
+        <h3>ORR Exit 8 growth corridor</h3>
+        <p>Keesara sits on Hyderabad's Outer Ring Road, fueling a real estate and infrastructure boom driven by nearby Pocharam IT SEZ.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="ad-banner">
+    <div>
+      <span class="tag">Sponsored</span>
+      <h4>Sri Sai Real Estate — plots near ORR Exit 8</h4>
+      <p>HMDA-approved layouts, starting ₹4,200/sqft. Featured business placement.</p>
+    </div>
+    <a class="btn btn-primary" href="#">View listing</a>
+  </div>
+</section>
+
+<section id="journal">
+  <div class="split">
+    <div>
+      <div class="section-head" style="margin-bottom:8px;">
+        <h2>Community news</h2>
+        <a href="#">Post an update →</a>
+      </div>
+      <div class="feed-item">
+        <div class="avatar">RK</div>
+        <div>
+          <span class="badge badge-verified">Verified by community</span>
+          <h4 style="margin-top:6px;">Water supply restored in Vannigudem after 2-day outage</h4>
+          <div class="meta">Posted by Ravi K. · 3 hours ago</div>
+          <div class="stats"><span>18 confirmed</span><span>7 comments</span></div>
+        </div>
+      </div>
+      <div class="feed-item">
+        <div class="avatar">SP</div>
+        <div>
+          <span class="badge badge-unverified">Community report, unverified</span>
+          <h4 style="margin-top:6px;">New vegetable market opening near Keesara bus stand this weekend</h4>
+          <div class="meta">Posted by Swathi P. · 6 hours ago</div>
+          <div class="stats"><span>4 confirmed</span><span>2 comments</span></div>
+        </div>
+      </div>
+      <div class="feed-item">
+        <div class="avatar">MN</div>
+        <div>
+          <span class="badge badge-verified">Verified by community</span>
+          <h4 style="margin-top:6px;">Road widening work begins on Shamirpet–Keesara stretch</h4>
+          <div class="meta">Posted by Manoj N. · yesterday</div>
+          <div class="stats"><span>26 confirmed</span><span>11 comments</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-head" style="margin-bottom:8px;">
+        <h2>From the journal</h2>
+      </div>
+      <div class="journal-card">
+        <div class="tag2">Real estate</div>
+        <h4>Why Keesara is Hyderabad's next ORR growth corridor</h4>
+        <p>A look at what the Regional Ring Road alignment means for land values east of the city.</p>
+        <div class="byline">By the keesara.city team</div>
+      </div>
+      <div class="journal-card">
+        <div class="tag2">Civic</div>
+        <h4>Inside the Keesaragutta temple restoration plans</h4>
+        <p>Heritage officials outline a multi-year plan to preserve the hilltop shrine and its ruins.</p>
+        <div class="byline">By the keesara.city team</div>
+      </div>
+      <div class="journal-card">
+        <div class="tag2">Education</div>
+        <h4>Guide: schools and colleges near ORR Exit 8</h4>
+        <p>Every reputed institution within a 5km radius, mapped and compared.</p>
+        <div class="byline">By the keesara.city team</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="directory">
+  <div class="section-head">
+    <h2>Business directory</h2>
+    <a href="#">Browse all →</a>
+  </div>
+  <div class="cat-chips">
+    <span class="chip active">All</span>
+    <span class="chip">Real estate</span>
+    <span class="chip">Education</span>
+    <span class="chip">Healthcare</span>
+    <span class="chip">Food & retail</span>
+    <span class="chip">Home services</span>
+    <span class="chip">Civic</span>
+  </div>
+  <div class="dir-grid">
+    <div class="biz-card">
+      <span class="ribbon">Featured</span>
+      <div class="img"></div>
+      <div class="body"><h4>Sri Sai Real Estate</h4><div class="cat">Real estate</div><div class="rating">★ 4.6 · 82 reviews</div></div>
+    </div>
+    <div class="biz-card">
+      <div class="img"></div>
+      <div class="body"><h4>Keesara Diagnostics</h4><div class="cat">Healthcare</div><div class="rating">★ 4.4 · 31 reviews</div></div>
+    </div>
+    <div class="biz-card">
+      <div class="img"></div>
+      <div class="body"><h4>Little Stars School</h4><div class="cat">Education</div><div class="rating">★ 4.8 · 56 reviews</div></div>
+    </div>
+    <div class="biz-card">
+      <span class="ribbon">Featured</span>
+      <div class="img"></div>
+      <div class="body"><h4>ORR Fresh Mart</h4><div class="cat">Food & retail</div><div class="rating">★ 4.3 · 44 reviews</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="cta">
+    <h2>Own a business in Keesara?</h2>
+    <p>List it free, and get discovered by residents searching right here on keesara.city.</p>
+    <a class="btn btn-primary" href="#">Add your business →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div><b style="color:var(--teal-900);">keesara.city</b><br>The local journal & directory for Keesara.</div>
+    <div>Directory · Journal · Highlights · Events</div>
+    <div>About · Advertise · Contact</div>
+  </div>
+</footer>
+
+</body>
+</html>

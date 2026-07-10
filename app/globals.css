@@ -1,26 +1,46 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --teal-900: #0b3d3a;
+  --teal-700: #0f6e56;
+  --teal-600: #137a63;
+  --teal-100: #e1f5ee;
+  --amber-600: #ba7517;
+  --amber-500: #d68f2c;
+  --amber-100: #faeeda;
+  --ink: #1c1f1e;
+  --ink-soft: #4a4f4d;
+  --ink-mute: #7a7f7c;
+  --paper: #faf9f5;
+  --card: #ffffff;
+  --line: #e7e4da;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-teal-900: var(--teal-900);
+  --color-teal-700: var(--teal-700);
+  --color-teal-600: var(--teal-600);
+  --color-teal-100: var(--teal-100);
+  --color-amber-600: var(--amber-600);
+  --color-amber-500: var(--amber-500);
+  --color-amber-100: var(--amber-100);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-mute: var(--ink-mute);
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --font-sans: var(--font-poppins);
+  --font-serif: var(--font-merriweather);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  line-height: 1.55;
+}
+
+.font-editorial {
+  font-family: var(--font-merriweather), Georgia, serif;
 }

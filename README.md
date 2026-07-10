@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# keesara.city
 
-## Getting Started
+Local journal and business directory for Keesara, Telangana.
 
-First, run the development server:
+## Stack
+
+- **Next.js** (App Router) + TypeScript + Tailwind
+- **Supabase** — Postgres, Auth (phone OTP + Google), RLS
+- **Vercel** — hosting (link repo and add env vars)
+- **GitHub Actions** — lint, typecheck, build on PRs
+
+## Quick start
 
 ```bash
+npm install
+supabase start          # requires Docker
+cp .env.example .env.local
+# fill keys from: supabase status -o env
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+See [docs/supabase-setup.md](docs/supabase-setup.md) for migrations, cloud linking, and test OTP (`9876543210` / `123456` locally).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Design reference: [docs/design/homepage-reference.html](docs/design/homepage-reference.html)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Routes
 
-## Learn More
+| Path | Description |
+|------|-------------|
+| `/` | Homepage — news, journal, directory preview, highlights |
+| `/directory` | Business listings with category filters |
+| `/directory/[slug]` | Business detail + LocalBusiness JSON-LD |
+| `/news` | Community news feed |
+| `/journal` | Team editorial articles |
+| `/search?q=` | Unified search |
 
-To learn more about Next.js, take a look at the following resources:
+## Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `npm run dev` — development server
+- `npm run build` — production build
+- `npm run lint` — ESLint
+- `npm run typecheck` — TypeScript
