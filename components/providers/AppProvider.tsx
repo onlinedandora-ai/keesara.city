@@ -8,7 +8,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import type { User } from "@supabase/supabase-js";
+import type { SupabaseClient, User } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/client";
 import { AuthModal } from "@/components/auth/AuthModal";
 import { PostNewsSheet } from "@/components/news/PostNewsSheet";
@@ -20,6 +20,7 @@ type AppContextValue = {
   openPostNews: () => void;
   closePostNews: () => void;
   refreshUser: () => Promise<void>;
+  signOut: () => Promise<void>;
 };
 
 const AppContext = createContext<AppContextValue | null>(null);
@@ -28,9 +29,16 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [authOpen, setAuthOpen] = useState(false);
   const [postOpen, setPostOpen] = useState(false);
-  const supabase = useMemo(() => createClient(), []);
+  const [supabase, setSupabase] = useState<SupabaseClient | null>(null);
+
+  // Create the browser client only after mount so prerender/build never hits
+  // @supabase/ssr with missing env vars.
+  useEffect(() => {
+    setSupabase(createClient());
+  }, []);
 
   const refreshUser = useCallback(async () => {
+    if (!supabase) return;
     const {
       data: { user: currentUser },
     } = await supabase.auth.getUser();
@@ -38,6 +46,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   }, [supabase]);
 
   useEffect(() => {
+    if (!supabase) return;
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -54,6 +63,12 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     setPostOpen(true);
   }, [user]);
 
+  const signOut = useCallback(async () => {
+    if (!supabase) return;
+    await supabase.auth.signOut();
+    setUser(null);
+  }, [supabase]);
+
   const value = useMemo(
     () => ({
       user,
@@ -62,8 +77,9 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       openPostNews,
       closePostNews: () => setPostOpen(false),
       refreshUser,
+      signOut,
     }),
-    [user, openPostNews, refreshUser],
+    [user, openPostNews, refreshUser, signOut],
   );
 
   return (

@@ -239,36 +239,29 @@ enable_signup = true
 # If enabled, users need to confirm their phone number before signing in.
 enable_confirmations = false
 # Template for sending OTP to users
-template = "Your code is {{ .Code }}"
+template = "Your keesara.city code is {{ .Code }}"
 # Controls the minimum amount of time that must pass before sending another sms otp.
 max_frequency = "5s"
 
-# Use pre-defined map of phone number to OTP for testing.
+# Use pre-defined map of phone number to OTP for testing (digits only, no +).
+# Local: send OTP to 9876543210 (or +919876543210), enter 123456.
 [auth.sms.test_otp]
 919876543210 = "123456"
+9876543210 = "123456"
 
-# Configure logged in session timeouts.
-# [auth.sessions]
-# Force log out after the specified duration.
-# timebox = "24h"
-# Force log out if the user has been inactive longer than the specified duration.
-# inactivity_timeout = "8h"
-
-# This hook runs before a new user is created and allows developers to reject the request based on the incoming user object.
-# [auth.hook.before_user_created]
-# enabled = true
-# uri = "pg-functions://postgres/auth/before-user-created-hook"
-
-# This hook runs before a token is issued and allows you to add additional claims based on the authentication method used.
-# [auth.hook.custom_access_token]
-# enabled = true
-# uri = "pg-functions://<database>/<schema>/<hook_name>"
+# Dummy SMS provider so GoTrue enables phone login locally.
+# Test OTP numbers never hit a real API; production should use Twilio instead.
+[auth.sms.textlocal]
+enabled = true
+api_key = "local-dev-dummy-key"
+sender = "KEESARA"
 
 # Configure one of the supported SMS providers: `twilio`, `twilio_verify`, `messagebird`, `textlocal`, `vonage`.
+# Production: set enabled = true and fill Twilio credentials (prefer Dashboard or .env).
 [auth.sms.twilio]
 enabled = false
-account_sid = ""
-message_service_sid = ""
+account_sid = "env(SUPABASE_AUTH_SMS_TWILIO_ACCOUNT_SID)"
+message_service_sid = "env(SUPABASE_AUTH_SMS_TWILIO_MESSAGE_SERVICE_SID)"
 # DO NOT commit your Twilio auth token to git. Use environment variable substitution instead:
 auth_token = "env(SUPABASE_AUTH_SMS_TWILIO_AUTH_TOKEN)"
 
@@ -311,6 +304,18 @@ url = ""
 # If enabled, the nonce check will be skipped. Required for local sign in with Google auth.
 skip_nonce_check = false
 # If enabled, it will allow the user to successfully authenticate when the provider does not return an email address.
+email_optional = false
+
+# Google OAuth — enable after adding credentials to supabase/.env
+# Create OAuth client at https://console.cloud.google.com/apis/credentials
+# Authorized redirect URI (local): http://127.0.0.1:55321/auth/v1/callback
+[auth.external.google]
+enabled = false
+client_id = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID)"
+secret = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET)"
+redirect_uri = ""
+url = ""
+skip_nonce_check = true
 email_optional = false
 
 # Allow Solana wallet holders to sign in to your project via the Sign in with Solana (SIWS, EIP-4361) standard.

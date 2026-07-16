@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 
 export function Header() {
   const pathname = usePathname();
-  const { user, openAuth, openPostNews } = useApp();
+  const { user, openAuth, openPostNews, signOut } = useApp();
   const isHome = pathname === "/";
 
   return (
@@ -39,9 +39,18 @@ export function Header() {
             Post news
           </Button>
           {user ? (
-            <span className="text-sm font-medium text-teal-700">
-              {user.email ?? user.phone ?? "Signed in"}
-            </span>
+            <>
+              <span className="max-w-[140px] truncate text-sm font-medium text-teal-700">
+                {user.user_metadata?.display_name ??
+                  user.user_metadata?.name ??
+                  user.phone ??
+                  user.email ??
+                  "Resident"}
+              </span>
+              <Button variant="ghost" onClick={() => void signOut()}>
+                Logout
+              </Button>
+            </>
           ) : (
             <Button onClick={openAuth}>Login</Button>
           )}

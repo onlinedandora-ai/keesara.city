@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { getBusinesses, getCategories } from "@/lib/data";
 import { BusinessCard } from "@/components/directory/BusinessCard";
 import { CategoryChips } from "@/components/directory/CategoryChips";
+import { DirectoryAddButton } from "@/components/directory/DirectoryAddButton";
 
 export const revalidate = 3600;
 
@@ -19,10 +20,15 @@ export default async function DirectoryPage({ searchParams }: DirectoryPageProps
   return (
     <div className="px-6 py-10">
       <div className="mx-auto max-w-6xl">
-        <h1 className="mb-2 text-3xl font-bold text-teal-900">Business directory</h1>
-        <p className="mb-8 text-ink-soft">
-          Find local businesses across Keesara — real estate, schools, healthcare, and more.
-        </p>
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h1 className="mb-2 text-3xl font-bold text-teal-900">Business directory</h1>
+            <p className="text-ink-soft">
+              Find local businesses across Keesara — real estate, schools, healthcare, and more.
+            </p>
+          </div>
+          <DirectoryAddButton />
+        </div>
         <Suspense fallback={<div className="mb-7 h-10" />}>
           <CategoryChips categories={categories} />
         </Suspense>

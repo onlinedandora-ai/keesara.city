@@ -23,6 +23,8 @@ export type Business = {
   description: string | null;
   address: string | null;
   phone: string | null;
+  location_url: string | null;
+  website: string | null;
   lat: number | null;
   lng: number | null;
   claimed_by: string | null;

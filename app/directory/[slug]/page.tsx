@@ -4,10 +4,11 @@ import { notFound } from "next/navigation";
 import { getBusinessBySlug } from "@/lib/data";
 import { Badge } from "@/components/ui/Badge";
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 type BusinessPageProps = {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ listed?: string }>;
 };
 
 export async function generateMetadata({
@@ -22,8 +23,9 @@ export async function generateMetadata({
   };
 }
 
-export default async function BusinessPage({ params }: BusinessPageProps) {
+export default async function BusinessPage({ params, searchParams }: BusinessPageProps) {
   const { slug } = await params;
+  const { listed } = await searchParams;
   const business = await getBusinessBySlug(slug);
   if (!business) notFound();
 
@@ -36,6 +38,7 @@ export default async function BusinessPage({ params }: BusinessPageProps) {
     description: business.description,
     address: business.address,
     telephone: business.phone,
+    url: business.website ?? undefined,
     geo:
       business.lat && business.lng
         ? {
@@ -63,6 +66,13 @@ export default async function BusinessPage({ params }: BusinessPageProps) {
         <Link href="/directory" className="text-sm font-semibold text-teal-700">
           ← Back to directory
         </Link>
+
+        {listed === "1" && (
+          <div className="mt-4 rounded-xl border border-teal-100 bg-teal-100 px-4 py-3 text-sm text-teal-900">
+            Your business is live on the directory. Share this page with customers.
+          </div>
+        )}
+
         <div className="mt-6 rounded-2xl border border-line bg-card p-8">
           {business.is_featured && (
             <Badge variant="featured" className="mb-3">
@@ -93,6 +103,41 @@ export default async function BusinessPage({ params }: BusinessPageProps) {
                   <a href={`tel:${business.phone}`} className="text-teal-700">
                     {business.phone}
                   </a>
+                </dd>
+              </div>
+            )}
+            {business.website && (
+              <div>
+                <dt className="font-semibold text-ink">Website</dt>
+                <dd>
+                  <a
+                    href={business.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="break-all text-teal-700"
+                  >
+                    {business.website.replace(/^https?:\/\//, "")}
+                  </a>
+                </dd>
+              </div>
+            )}
+            {business.location_url && (
+              <div>
+                <dt className="font-semibold text-ink">Location</dt>
+                <dd>
+                  <a
+                    href={business.location_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 font-semibold text-amber-600 hover:text-amber-700"
+                  >
+                    Open in Google Maps →
+                  </a>
+                  {business.lat != null && business.lng != null && (
+                    <span className="mt-1 block text-xs text-ink-mute">
+                      {business.lat.toFixed(5)}, {business.lng.toFixed(5)}
+                    </span>
+                  )}
                 </dd>
               </div>
             )}

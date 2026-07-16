@@ -13,7 +13,7 @@ const tabs = [
 
 export function MobileNav() {
   const pathname = usePathname();
-  const { user, openAuth, openPostNews } = useApp();
+  const { user, openAuth, openPostNews, signOut } = useApp();
 
   return (
     <nav
@@ -46,11 +46,11 @@ export function MobileNav() {
               <button
                 key={tab.label}
                 type="button"
-                onClick={user ? undefined : openAuth}
+                onClick={() => (user ? void signOut() : openAuth())}
                 className="flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-soft"
               >
                 <span className="text-base">{user ? "✓" : tab.icon}</span>
-                {user ? "Account" : tab.label}
+                {user ? "Logout" : tab.label}
               </button>
             );
           }
