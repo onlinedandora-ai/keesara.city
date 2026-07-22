@@ -630,8 +630,50 @@ async function attachNewsStats(posts: NewsPost[]): Promise<NewsPost[]> {
   }));
 }
 
+const FALLBACK_JOURNAL_POSTS: JournalPost[] = [
+  {
+    id: "journal-1",
+    author_id: null,
+    title: "Why Keesara is Hyderabad's next ORR growth corridor",
+    slug: "why-keesara-is-hyderabads-next-orr-growth-corridor",
+    excerpt: "A look at what the Regional Ring Road alignment and ORR Exit 8 mean for land values and development east of the city.",
+    body: "Keesara has emerged as one of the most promising growth nodes along Hyderabad's Outer Ring Road (ORR) Exit 8 corridor. Situated strategically near the Pocharam IT SEZ and well-connected to ECIL and Uppal, the area is witnessing rapid residential and commercial expansion.\n\nWith HMDA-approved layouts, improved groundwater infrastructure, and upcoming connectivity enhancements related to the proposed Regional Ring Road (RRR), land values in Keesara have steadily appreciated. Families and real estate developers alike are taking notice of its quiet suburban feel paired with urban proximity.",
+    category: "Real estate",
+    published_at: "2026-07-13T10:00:00Z",
+    featured: true,
+    created_at: "2026-07-13T10:00:00Z",
+    profiles: { display_name: "the keesara.city team" },
+  },
+  {
+    id: "journal-2",
+    author_id: null,
+    title: "Inside the Keesaragutta temple restoration plans",
+    slug: "inside-the-keesaragutta-temple-restoration-plans",
+    excerpt: "Heritage officials outline a multi-year plan to preserve the hilltop shrine, its 101 Shivalingams, and Vishnukundin-era ruins.",
+    body: "The historic Sri Ramalingeshwara Swamy Temple atop Keesaragutta hill is set to undergo comprehensive heritage preservation and pilgrim amenity upgrades under new government initiatives.\n\nArchaeological experts and temple administration officials have announced plans to restore ancient stone mandapams, preserve 4th-5th century Vishnukundin dynasty brick structures, and enhance queuing facilities for the annual Maha Shivaratri festival. Environmental conservation around the surrounding hillocks is also a key priority.",
+    category: "Civic",
+    published_at: "2026-07-11T10:00:00Z",
+    featured: true,
+    created_at: "2026-07-11T10:00:00Z",
+    profiles: { display_name: "the keesara.city team" },
+  },
+  {
+    id: "journal-3",
+    author_id: null,
+    title: "Guide: schools and colleges near ORR Exit 8",
+    slug: "guide-schools-and-colleges-near-orr-exit-8",
+    excerpt: "Every reputed educational institution within a 5km radius of Keesara, mapped and detailed for families.",
+    body: "As residential communities grow around Keesara and ORR Exit 8, access to quality education has become a top priority for moving families. The corridor now hosts several premier schools and engineering institutions.\n\nFrom international CBSE campuses like Pallavi International School to reputed engineering centers like Geethanjali College of Engineering & Technology, parents have top-tier choices within a 10-minute drive. This guide breaks down admission criteria, transport options, and campus highlights across the area.",
+    category: "Education",
+    published_at: "2026-07-09T10:00:00Z",
+    featured: true,
+    created_at: "2026-07-09T10:00:00Z",
+    profiles: { display_name: "the keesara.city team" },
+  },
+];
+
 export async function getJournalPosts(limit = 10): Promise<JournalPost[]> {
-  if (!hasSupabaseEnv()) return [];
+  if (!hasSupabaseEnv()) return FALLBACK_JOURNAL_POSTS.slice(0, limit);
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("journal_posts")
@@ -640,14 +682,16 @@ export async function getJournalPosts(limit = 10): Promise<JournalPost[]> {
     .lte("published_at", new Date().toISOString())
     .order("published_at", { ascending: false })
     .limit(limit);
-  if (error) return [];
-  return data ?? [];
+  if (error || !data || data.length === 0) return FALLBACK_JOURNAL_POSTS.slice(0, limit);
+  return data as JournalPost[];
 }
 
 export async function getJournalPostBySlug(
   slug: string,
 ): Promise<JournalPost | null> {
-  if (!hasSupabaseEnv()) return null;
+  if (!hasSupabaseEnv()) {
+    return FALLBACK_JOURNAL_POSTS.find((p) => p.slug === slug) ?? null;
+  }
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("journal_posts")
@@ -656,8 +700,10 @@ export async function getJournalPostBySlug(
     .not("published_at", "is", null)
     .lte("published_at", new Date().toISOString())
     .single();
-  if (error) return null;
-  return data;
+  if (error || !data) {
+    return FALLBACK_JOURNAL_POSTS.find((p) => p.slug === slug) ?? null;
+  }
+  return data as JournalPost;
 }
 
 export async function getSiteStats(): Promise<SiteStats> {
