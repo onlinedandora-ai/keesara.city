@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useApp } from "@/components/providers/AppProvider";
 import { SearchBar } from "@/components/ui/SearchBar";
 import { Button } from "@/components/ui/Button";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function Header() {
   const pathname = usePathname();
@@ -35,6 +36,7 @@ export function Header() {
         </div>
 
         <div className="hidden items-center gap-2.5 md:flex">
+          <ThemeToggle variant="pill" showLabel={false} />
           <Button variant="ghost" onClick={openPostNews}>
             Post news
           </Button>

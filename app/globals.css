@@ -14,6 +14,24 @@
   --paper: #faf9f5;
   --card: #ffffff;
   --line: #e7e4da;
+  color-scheme: light;
+}
+
+.dark {
+  --teal-900: #5eead4;
+  --teal-700: #2dd4bf;
+  --teal-600: #14b8a6;
+  --teal-100: #134e4a;
+  --amber-600: #f59e0b;
+  --amber-500: #fbbf24;
+  --amber-100: #451a03;
+  --ink: #f3f4f6;
+  --ink-soft: #9ca3af;
+  --ink-mute: #6b7280;
+  --paper: #0b0f19;
+  --card: #151c2c;
+  --line: #26334d;
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -39,6 +57,7 @@ body {
   color: var(--ink);
   font-family: var(--font-poppins), system-ui, sans-serif;
   line-height: 1.55;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .font-editorial {

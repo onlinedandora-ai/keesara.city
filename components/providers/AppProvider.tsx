@@ -21,6 +21,9 @@ type AppContextValue = {
   closePostNews: () => void;
   refreshUser: () => Promise<void>;
   signOut: () => Promise<void>;
+  theme: "light" | "dark";
+  toggleTheme: () => void;
+  setTheme: (theme: "light" | "dark") => void;
 };
 
 const AppContext = createContext<AppContextValue | null>(null);
@@ -30,6 +33,31 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [authOpen, setAuthOpen] = useState(false);
   const [postOpen, setPostOpen] = useState(false);
   const [supabase, setSupabase] = useState<SupabaseClient | null>(null);
+  const [theme, setThemeState] = useState<"light" | "dark">("light");
+
+  // Load saved theme or system preference on mount
+  useEffect(() => {
+    const saved = typeof window !== "undefined" ? (localStorage.getItem("theme") as "light" | "dark" | null) : null;
+    if (saved === "dark" || saved === "light") {
+      setThemeState(saved);
+      document.documentElement.classList.toggle("dark", saved === "dark");
+    } else if (typeof window !== "undefined") {
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const initial = prefersDark ? "dark" : "light";
+      setThemeState(initial);
+      document.documentElement.classList.toggle("dark", initial === "dark");
+    }
+  }, []);
+
+  const setTheme = useCallback((newTheme: "light" | "dark") => {
+    setThemeState(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
+  }, []);
+
+  const toggleTheme = useCallback(() => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  }, [theme, setTheme]);
 
   // Create the browser client only after mount so prerender/build never hits
   // @supabase/ssr with missing env vars.
@@ -78,8 +106,11 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       closePostNews: () => setPostOpen(false),
       refreshUser,
       signOut,
+      theme,
+      toggleTheme,
+      setTheme,
     }),
-    [user, openPostNews, refreshUser, signOut],
+    [user, openPostNews, refreshUser, signOut, theme, toggleTheme, setTheme],
   );
 
   return (
