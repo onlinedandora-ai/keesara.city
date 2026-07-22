@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getJournalPosts } from "@/lib/data";
+import { SITE } from "@/lib/constants";
 
 export const revalidate = 3600;
 
@@ -11,7 +12,7 @@ export default async function JournalPage() {
       <div className="mx-auto max-w-3xl">
         <h1 className="text-3xl font-bold text-teal-900">Journal</h1>
         <p className="mt-2 text-ink-soft">
-          Editorial reporting and guides from the keesara.city team.
+          Editorial reporting and guides from the {SITE.brand} team.
         </p>
         <div className="mt-10 space-y-8">
           {posts.length === 0 ? (
@@ -33,7 +34,7 @@ export default async function JournalPage() {
                   <p className="font-editorial mt-3 text-ink-soft">{post.excerpt}</p>
                 )}
                 <p className="mt-3 text-xs text-ink-mute">
-                  By {post.profiles?.display_name ?? "the keesara.city team"}
+                  By {post.profiles?.display_name ?? `the ${SITE.brand} team`}
                 </p>
               </article>
             ))

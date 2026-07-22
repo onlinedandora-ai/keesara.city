@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { JournalPost } from "@/lib/types";
+import { SITE } from "@/lib/constants";
 
 type JournalSidebarProps = {
   posts: JournalPost[];
@@ -33,7 +34,7 @@ export function JournalSidebar({ posts }: JournalSidebarProps) {
               <p className="font-editorial mt-1.5 text-[13px] text-ink-soft">{post.excerpt}</p>
             )}
             <p className="mt-2 text-[11px] text-ink-mute">
-              By {post.profiles?.display_name ?? "the keesara.city team"}
+              By {post.profiles?.display_name ?? `the ${SITE.brand} team`}
             </p>
           </article>
         ))

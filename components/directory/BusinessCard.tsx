@@ -23,10 +23,23 @@ export function BusinessCard({ business }: BusinessCardProps) {
           <Badge variant="featured">Featured</Badge>
         </span>
       )}
-      <div className="h-28 bg-teal-100" />
+      <div className="h-28 bg-teal-100/40 dark:bg-slate-800 flex items-center justify-center p-3 text-center">
+        <span className="text-2xl font-bold text-teal-800/40 dark:text-amber-500/30">
+          {business.name.slice(0, 2).toUpperCase()}
+        </span>
+      </div>
       <div className="p-4">
-        <h4 className="text-sm font-semibold">{business.name}</h4>
-        <p className="mt-0.5 text-[11.5px] text-teal-700">{categoryName}</p>
+        <div>
+          <h4 className="text-sm font-semibold text-ink">{business.name}</h4>
+        </div>
+        <p className="mt-0.5 text-[11.5px] font-medium text-teal-700 dark:text-amber-500">
+          {categoryName}
+        </p>
+        {business.address && (
+          <p className="mt-1 text-xs text-ink-soft line-clamp-1">
+            📍 {business.address}
+          </p>
+        )}
         {business.rating != null && (
           <p className="mt-1.5 text-xs text-ink-mute">
             ★ {business.rating} · {business.review_count ?? 0} reviews

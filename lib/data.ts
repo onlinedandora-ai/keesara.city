@@ -231,6 +231,126 @@ const FALLBACK_BUSINESSES: Business[] = [
     created_at: new Date().toISOString(),
     categories: { slug: "healthcare", name: "Healthcare & Wellness" },
   },
+  {
+    id: "hc-6",
+    name: "Sri Sri Holistic Hospitals",
+    slug: "sri-sri-holistic-hospitals",
+    category_id: "cat-2",
+    description: "Multi-specialty hospital providing comprehensive healthcare and emergency services on Nizampet Road.",
+    address: "Nizampet Road",
+    phone: null,
+    location_url: "https://maps.google.com/?q=Sri+Sri+Holistic+Hospitals+Nizampet+Road",
+    website: null,
+    lat: 17.514,
+    lng: 78.388,
+    claimed_by: null,
+    status: "active",
+    is_featured: true,
+    rating: 4.6,
+    review_count: 120,
+    created_at: new Date().toISOString(),
+    categories: { slug: "healthcare", name: "Healthcare & Wellness" },
+  },
+  {
+    id: "hc-7",
+    name: "SLG Hospitals",
+    slug: "slg-hospitals",
+    category_id: "cat-2",
+    description: "Advanced super-specialty hospital with state-of-the-art medical infrastructure on Bachupally Road.",
+    address: "Bachupally Road",
+    phone: null,
+    location_url: "https://maps.google.com/?q=SLG+Hospitals+Bachupally+Road",
+    website: null,
+    lat: 17.531,
+    lng: 78.375,
+    claimed_by: null,
+    status: "active",
+    is_featured: true,
+    rating: 4.3,
+    review_count: 95,
+    created_at: new Date().toISOString(),
+    categories: { slug: "healthcare", name: "Healthcare & Wellness" },
+  },
+  {
+    id: "hc-8",
+    name: "Pragathi's Yoga Center",
+    slug: "pragathis-yoga-center",
+    category_id: "cat-2",
+    description: "Holistic wellness and yoga center offering therapeutic yoga, meditation, and fitness classes.",
+    address: "Kakatiya Hills",
+    phone: null,
+    location_url: "https://maps.google.com/?q=Pragathi+Yoga+Center+Kakatiya+Hills",
+    website: null,
+    lat: 17.442,
+    lng: 78.391,
+    claimed_by: null,
+    status: "active",
+    is_featured: true,
+    rating: 4.8,
+    review_count: 64,
+    created_at: new Date().toISOString(),
+    categories: { slug: "healthcare", name: "Healthcare & Wellness" },
+  },
+  {
+    id: "re-6",
+    name: "Veeradhya Properties",
+    slug: "veeradhya-properties",
+    category_id: "cat-1",
+    description: "Premium real estate consultancy and property advisory serving Hill County and surrounding corridors.",
+    address: "Hill County",
+    phone: null,
+    location_url: "https://maps.google.com/?q=Veeradhya+Properties+Hill+County",
+    website: null,
+    lat: 17.518,
+    lng: 78.384,
+    claimed_by: null,
+    status: "active",
+    is_featured: true,
+    rating: 5.0,
+    review_count: 48,
+    created_at: new Date().toISOString(),
+    categories: { slug: "real-estate", name: "Real estate" },
+  },
+  {
+    id: "re-7",
+    name: "A&I Realty",
+    slug: "a-and-i-realty",
+    category_id: "cat-1",
+    description: "Trusted property management, residential layout advisory, and real estate services in Pragathi Nagar.",
+    address: "Pragathi Nagar",
+    phone: null,
+    location_url: "https://maps.google.com/?q=A%26I+Realty+Pragathi+Nagar",
+    website: null,
+    lat: 17.516,
+    lng: 78.39,
+    claimed_by: null,
+    status: "active",
+    is_featured: true,
+    rating: 5.0,
+    review_count: 52,
+    created_at: new Date().toISOString(),
+    categories: { slug: "real-estate", name: "Real estate" },
+  },
+  {
+    id: "biz-4",
+    name: "Pai International",
+    slug: "pai-international",
+    category_id: "cat-3",
+    description: "Leading electronics, appliances, and retail store chain offering home appliances and digital gadgets.",
+    address: "Nizampet Colony",
+    phone: null,
+    location_url: "https://maps.google.com/?q=Pai+International+Nizampet+Colony",
+    website: null,
+    lat: 17.512,
+    lng: 78.389,
+    claimed_by: null,
+    status: "active",
+    is_featured: true,
+    rating: 4.8,
+    review_count: 180,
+    created_at: new Date().toISOString(),
+    categories: { slug: "food-retail", name: "Business & Retail" },
+  },
 
   // --- BUSINESS & RETAIL ---
   {
@@ -612,31 +732,7 @@ export async function searchSite(query: string) {
   };
 }
 
-export function formatRelativeTime(dateString: string) {
-  const date = new Date(dateString);
-  const now = new Date();
-  const diffMs = now.getTime() - date.getTime();
-  const diffMins = Math.floor(diffMs / 60000);
-  const diffHours = Math.floor(diffMins / 60);
-  const diffDays = Math.floor(diffHours / 24);
+export { formatRelativeTime, getInitials } from "@/lib/utils";
 
-  if (diffMins < 1) return "just now";
-  if (diffMins < 60) return `${diffMins}m ago`;
-  if (diffHours < 24) return `${diffHours}h ago`;
-  if (diffDays === 1) return "yesterday";
-  if (diffDays < 7) return `${diffDays}d ago`;
-  return date.toLocaleDateString("en-IN", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
-}
 
-export function getInitials(name: string) {
-  return name
-    .split(" ")
-    .map((part) => part[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-}
+

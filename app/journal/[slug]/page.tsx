@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getJournalPostBySlug } from "@/lib/data";
+import { SITE } from "@/lib/constants";
 
 export const revalidate = 3600;
 
@@ -41,7 +42,7 @@ export default async function JournalArticlePage({ params }: JournalArticlePageP
           {post.title}
         </h1>
         <p className="mt-4 text-sm text-ink-mute">
-          By {post.profiles?.display_name ?? "the keesara.city team"}
+          By {post.profiles?.display_name ?? `the ${SITE.brand} team`}
           {post.published_at &&
             ` · ${new Date(post.published_at).toLocaleDateString("en-IN", {
               day: "numeric",

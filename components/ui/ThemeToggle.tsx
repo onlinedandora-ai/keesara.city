@@ -45,7 +45,7 @@ export function ThemeToggle({
           className={cn(
             "flex items-center gap-1.5 rounded-full px-2.5 py-1 transition-all",
             isDark
-              ? "bg-teal-700 text-white shadow-xs font-semibold"
+              ? "bg-amber-500 text-slate-950 shadow-xs font-bold"
               : "text-ink-soft hover:text-ink"
           )}
           aria-label="Switch to Dark mode"
@@ -62,7 +62,7 @@ export function ThemeToggle({
       type="button"
       onClick={toggleTheme}
       className={cn(
-        "inline-flex items-center gap-2 rounded-lg border border-line bg-card px-3 py-1.5 text-sm font-medium text-ink transition-colors hover:bg-paper hover:border-teal-700",
+        "inline-flex items-center gap-2 rounded-lg border border-line bg-card px-3 py-1.5 text-sm font-medium text-ink transition-colors hover:bg-paper hover:border-amber-500",
         className
       )}
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}

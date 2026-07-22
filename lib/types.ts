@@ -72,3 +72,20 @@ export type SiteStats = {
   businessCount: number;
   residentCount: number;
 };
+
+export type AnnouncementTag = "OFFICIAL" | "PROPOSED" | "ALERT" | "NOTICE";
+
+export type Announcement = {
+  id: string;
+  title: string;
+  slug: string;
+  tag: AnnouncementTag;
+  category: string;
+  summary: string;
+  body?: string | null;
+  document_url?: string | null;
+  department?: string | null;
+  created_at: string;
+  status: "active" | "archived";
+};
+

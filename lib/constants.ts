@@ -46,11 +46,13 @@ export const HOUSE_AD = {
 } as const;
 
 export const SITE = {
-  name: "keesara.city",
+  name: process.env.NEXT_PUBLIC_SITE_NAME || "keesara.city",
+  domain: "keesara.city",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://keesara.city",
   tagline: "Keesara, Telangana — local & unfiltered",
   description:
-    "The local journal and business directory built for Keesara, powered by Online Dandora AI.",
-  author: "onlinedandora-ai",
-  brand: "Online Dandora AI",
-  github: "https://github.com/onlinedandora-ai/keesara.city",
+    "The local journal and business directory built for Keesara.",
+  author: "Keesara City Team",
+  brand: "Keesara City",
+  github: "",
 } as const;

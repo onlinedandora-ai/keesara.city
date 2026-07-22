@@ -8,22 +8,10 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-2">
             <p className="font-bold text-teal-900">{SITE.name}</p>
-            <span className="text-xs font-semibold text-amber-600 bg-amber-100/60 dark:bg-amber-900/40 px-2 py-0.5 rounded-full border border-amber-500/20">
-              by {SITE.author}
-            </span>
           </div>
           <p className="mt-1">{SITE.description}</p>
           <p className="mt-3 max-w-md text-xs">
-            Powered by{" "}
-            <a
-              href={SITE.github}
-              className="font-medium text-teal-700 underline hover:text-teal-900"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {SITE.brand}
-            </a>
-            . Highlight images from{" "}
+            Highlight images from{" "}
             <a
               href="https://commons.wikimedia.org"
               className="underline hover:text-teal-700"
@@ -33,6 +21,17 @@ export function Footer() {
               Wikimedia Commons
             </a>
             .
+          </p>
+          <p className="mt-2 text-xs text-ink-mute">
+            Developed by{" "}
+            <a
+              href="https://dandora.online"
+              className="font-medium underline hover:text-teal-700"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Dandora Online
+            </a>
           </p>
         </div>
         <div className="flex flex-col gap-1">
@@ -50,14 +49,6 @@ export function Footer() {
           </Link>
         </div>
         <div className="flex flex-col gap-1">
-          <a
-            href={SITE.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-teal-700 font-medium text-teal-700"
-          >
-            GitHub (@onlinedandora-ai)
-          </a>
           <span>About</span>
           <span>Advertise</span>
           <span>Contact</span>

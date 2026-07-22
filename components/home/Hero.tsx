@@ -32,7 +32,7 @@ export function Hero({ stats }: HeroProps) {
           <b className="block text-2xl text-teal-900">
             {stats.residentCount > 0 ? `${stats.residentCount}+` : "—"}
           </b>
-          <span className="text-xs text-ink-mute">residents on keesara.city</span>
+          <span className="text-xs text-ink-mute">residents on {SITE.name}</span>
         </div>
       </div>
     </section>

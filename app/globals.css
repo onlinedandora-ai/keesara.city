@@ -18,19 +18,19 @@
 }
 
 .dark {
-  --teal-900: #5eead4;
-  --teal-700: #2dd4bf;
-  --teal-600: #14b8a6;
-  --teal-100: #134e4a;
+  --teal-900: #f8fafc;
+  --teal-700: #d97706;
+  --teal-600: #b45309;
+  --teal-100: #1e293b;
   --amber-600: #f59e0b;
   --amber-500: #fbbf24;
   --amber-100: #451a03;
-  --ink: #f3f4f6;
-  --ink-soft: #9ca3af;
-  --ink-mute: #6b7280;
-  --paper: #0b0f19;
-  --card: #151c2c;
-  --line: #26334d;
+  --ink: #f8fafc;
+  --ink-soft: #cbd5e1;
+  --ink-mute: #94a3b8;
+  --paper: #0f172a;
+  --card: #1e293b;
+  --line: #334155;
   color-scheme: dark;
 }
 

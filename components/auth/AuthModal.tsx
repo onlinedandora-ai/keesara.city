@@ -298,6 +298,17 @@ export function AuthModal({ open, onClose }: AuthModalProps) {
           <span>Appearance theme</span>
           <ThemeToggle variant="button" showLabel={true} />
         </div>
+        <div className="mt-3 text-center text-xs text-ink-mute">
+          Powered by{" "}
+          <a
+            href="https://dandora.online"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium underline hover:text-teal-700"
+          >
+            Dandora Online
+          </a>
+        </div>
       </div>
     </div>
   );

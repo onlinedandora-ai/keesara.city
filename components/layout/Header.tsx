@@ -6,6 +6,7 @@ import { useApp } from "@/components/providers/AppProvider";
 import { SearchBar } from "@/components/ui/SearchBar";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { SITE } from "@/lib/constants";
 
 export function Header() {
   const pathname = usePathname();
@@ -17,10 +18,7 @@ export function Header() {
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-5 px-6 py-4">
         <Link href="/" className="flex items-center gap-2 text-xl font-bold text-teal-900">
           <span className="inline-block h-2.5 w-2.5 rounded-full bg-amber-500" />
-          <span>keesara.city</span>
-          <span className="hidden sm:inline-block ml-1 text-[10px] font-semibold tracking-wider text-amber-600 bg-amber-100/60 dark:bg-amber-900/40 px-2 py-0.5 rounded-full uppercase border border-amber-500/20">
-            by onlinedandora-ai
-          </span>
+          <span>{SITE.name}</span>
         </Link>
 
         <div className="hidden items-center gap-7 text-sm font-medium text-ink-soft md:flex">
@@ -59,6 +57,15 @@ export function Header() {
           ) : (
             <Button onClick={openAuth}>Login</Button>
           )}
+          <a
+            href="https://dandora.online"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button variant="ghost" size="lg">
+              Dandora
+            </Button>
+          </a>
         </div>
       </nav>
 

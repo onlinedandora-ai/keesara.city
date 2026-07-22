@@ -109,7 +109,13 @@ FROM (VALUES
   ('Keesara Auto Stand', 'keesara-auto-stand', 'transport', 'Shared auto stand near Keesara bus station', 'Near Keesara Bus Station, 501301', NULL, false, 3.5, 40, 17.5302, 78.6492),
   ('ECIL–Keesara Road Cab Point', 'ecil-keesara-cab-point', 'transport', 'Pickup point for cabs and bike taxis on ECIL–Keesara Road', 'ECIL - Keesara Rd junction area', NULL, false, 3.6, 18, 17.52, 78.63),
   ('Godumakunta Mechanic Shed', 'godumakunta-mechanic', 'transport', 'Two-wheeler and car mechanic near Godumakunta', 'Godumakunta, Keesara', NULL, false, 4.0, 30, 17.533, 78.6455),
-  ('Cheeriyal Bike Service', 'cheeriyal-bike-service', 'transport', 'Bike service centre at Cheeriyal', 'Cheeriyal, Keesara Mandal', NULL, false, 3.9, 22, 17.5235, 78.6572)
+  ('Cheeriyal Bike Service', 'cheeriyal-bike-service', 'transport', 'Bike service centre at Cheeriyal', 'Cheeriyal, Keesara Mandal', NULL, false, 3.9, 22, 17.5235, 78.6572),
+  ('Sri Sri Holistic Hospitals', 'sri-sri-holistic-hospitals', 'healthcare', 'Multi-specialty hospital providing comprehensive healthcare and emergency services on Nizampet Road', 'Nizampet Road', NULL, true, 4.6, 120, 17.514, 78.388),
+  ('SLG Hospitals', 'slg-hospitals', 'healthcare', 'Advanced super-specialty hospital with state-of-the-art medical infrastructure on Bachupally Road', 'Bachupally Road', NULL, true, 4.3, 95, 17.531, 78.375),
+  ('Pragathi''s Yoga Center', 'pragathis-yoga-center', 'healthcare', 'Holistic wellness and yoga center offering therapeutic yoga, meditation, and fitness classes', 'Kakatiya Hills', NULL, true, 4.8, 64, 17.442, 78.391),
+  ('Veeradhya Properties', 'veeradhya-properties', 'real-estate', 'Premium real estate consultancy and property advisory serving Hill County and surrounding corridors', 'Hill County', NULL, true, 5.0, 48, 17.518, 78.384),
+  ('A&I Realty', 'a-and-i-realty', 'real-estate', 'Trusted property management, residential layout advisory, and real estate services in Pragathi Nagar', 'Pragathi Nagar', NULL, true, 5.0, 52, 17.516, 78.39),
+  ('Pai International', 'pai-international', 'food-retail', 'Leading electronics, appliances, and retail store chain offering home appliances and digital gadgets', 'Nizampet Colony', NULL, true, 4.8, 180, 17.512, 78.389)
 ) AS b(name, slug, cat_slug, description, address, phone, is_featured, rating, review_count, lat, lng)
 JOIN public.categories c ON c.slug = b.cat_slug
 ON CONFLICT (slug) DO UPDATE SET
