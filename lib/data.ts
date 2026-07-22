@@ -28,7 +28,27 @@ const FALLBACK_CATEGORIES: Category[] = [
 
 // Scraped Google Maps place seed data for Keesara & ORR Exit 8 corridor
 const FALLBACK_BUSINESSES: Business[] = [
-  // --- REAL ESTATE ---
+  // --- REAL ESTATE & BUILDERS ---
+  {
+    id: "re-kb-1",
+    name: "Keesara Builders & Developers (Mee Illu, Mee Istam)",
+    slug: "keesara-builders-developers",
+    category_id: "cat-1",
+    description: "Custom architecture & top-quality house construction. HMDA-approved plots in Hyderabad or build on your own plot with full design freedom.",
+    address: "Keesara Main Road, near ORR Exit 8, Keesara 501301",
+    phone: "+91 91 77000 848",
+    location_url: "https://maps.google.com/?q=Keesara+ORR+Exit+8",
+    website: "/mee-illu-mee-istam",
+    lat: 17.531,
+    lng: 78.649,
+    claimed_by: null,
+    status: "active",
+    is_featured: true,
+    rating: 4.9,
+    review_count: 87,
+    created_at: new Date().toISOString(),
+    categories: { slug: "real-estate", name: "Real estate" },
+  },
   {
     id: "re-1",
     name: "Sri Sai Real Estate & Developers",

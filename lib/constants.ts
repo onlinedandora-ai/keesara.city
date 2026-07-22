@@ -39,10 +39,15 @@ export const HIGHLIGHTS = [
 ] as const;
 
 export const HOUSE_AD = {
-  tag: "Sponsored",
-  title: "Sri Sai Real Estate — plots near ORR Exit 8",
-  description: "HMDA-approved layouts, starting ₹4,200/sqft. Featured business placement.",
-  href: "/directory/sri-sai-real-estate",
+  tag: "Featured Builder",
+  title: "మీ ఇల్లు మీ ఇష్టం — Keesara Builders & Developers",
+  description: "HMDA-approved plots & custom home architecture in Hyderabad & Keesara. Built to your exact taste.",
+  href: "/mee-illu-mee-istam",
+  bannerImage: "/images/mee-illu-mee-istam/banner-landscape.jpg",
+  heroImage: "/images/mee-illu-mee-istam/hero-square.jpg",
+  phone: "+91 91 77000 848",
+  phoneRaw: "+919177000848",
+  whatsapp: "919177000848",
 } as const;
 
 export const SITE = {
