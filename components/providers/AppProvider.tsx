@@ -32,38 +32,25 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [authOpen, setAuthOpen] = useState(false);
   const [postOpen, setPostOpen] = useState(false);
-  const [supabase, setSupabase] = useState<SupabaseClient | null>(null);
-  const [theme, setThemeState] = useState<"light" | "dark">("light");
-
-  // Load saved theme or system preference on mount
-  useEffect(() => {
-    const saved = typeof window !== "undefined" ? (localStorage.getItem("theme") as "light" | "dark" | null) : null;
-    if (saved === "dark" || saved === "light") {
-      setThemeState(saved);
-      document.documentElement.classList.toggle("dark", saved === "dark");
-    } else if (typeof window !== "undefined") {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const initial = prefersDark ? "dark" : "light";
-      setThemeState(initial);
-      document.documentElement.classList.toggle("dark", initial === "dark");
+  const [supabase] = useState<SupabaseClient | null>(() => {
+    if (typeof window !== "undefined") {
+      return createClient();
     }
-  }, []);
+    return null;
+  });
+  const [theme, setThemeState] = useState<"light" | "dark">(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("theme") as "light" | "dark" | null;
+      if (saved === "dark" || saved === "light") return saved;
+      return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    return "light";
+  });
 
-  const setTheme = useCallback((newTheme: "light" | "dark") => {
-    setThemeState(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
-  }, []);
-
-  const toggleTheme = useCallback(() => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  }, [theme, setTheme]);
-
-  // Create the browser client only after mount so prerender/build never hits
-  // @supabase/ssr with missing env vars.
+  // Sync DOM dark class when theme changes
   useEffect(() => {
-    setSupabase(createClient());
-  }, []);
+    document.documentElement.classList.toggle("dark", theme === "dark");
+  }, [theme]);
 
   const refreshUser = useCallback(async () => {
     if (!supabase) return;
@@ -96,6 +83,23 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     await supabase.auth.signOut();
     setUser(null);
   }, [supabase]);
+
+  const setTheme = useCallback((newTheme: "light" | "dark") => {
+    setThemeState(newTheme);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("theme", newTheme);
+    }
+  }, []);
+
+  const toggleTheme = useCallback(() => {
+    setThemeState((prev) => {
+      const next = prev === "dark" ? "light" : "dark";
+      if (typeof window !== "undefined") {
+        localStorage.setItem("theme", next);
+      }
+      return next;
+    });
+  }, []);
 
   const value = useMemo(
     () => ({

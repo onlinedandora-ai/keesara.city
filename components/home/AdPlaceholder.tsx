@@ -9,12 +9,13 @@ export function AdPlaceholder() {
     <section className="px-6 py-6">
       <div className="mx-auto max-w-6xl overflow-hidden rounded-2xl border border-amber-500/30 bg-card shadow-md transition-all hover:shadow-xl">
         <Link href={HOUSE_AD.href} className="group block">
-          <div className="relative aspect-[1024/394] w-full overflow-hidden bg-[#faf6ee]">
+          <div className="relative flex items-center justify-center w-full overflow-hidden bg-[#faf6ee]">
             <Image
               src={HOUSE_AD.bannerImage}
               alt="మీ ఇల్లు మీ ఇష్టం — Keesara Builders & Developers"
-              fill
-              className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.01]"
+              width={1024}
+              height={394}
+              className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-[1.01]"
               priority
               sizes="(max-width: 1200px) 100vw, 1200px"
             />

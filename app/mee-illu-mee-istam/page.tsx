@@ -56,14 +56,14 @@ export default function MeeIlluMeeIstamPage() {
                   మీ ఇల్లు <span className="text-amber-400 underline decoration-amber-500/40 underline-offset-8">మీ ఇష్టం</span>
                 </h1>
                 <p className="mt-3 text-lg font-medium text-amber-200/90 italic md:text-xl">
-                  "ఆ కలను నిజం చేసే నమ్మకమైన భాగస్వామి"
+                  &quot;ఆ కలను నిజం చేసే నమ్మకమైన భాగస్వామి&quot;
                 </p>
               </div>
 
               {/* Main Message Box Requested by User */}
               <div className="rounded-2xl border border-amber-400/20 bg-white/5 p-6 backdrop-blur-md">
                 <p className="text-base leading-relaxed text-amber-50 md:text-lg font-sans">
-                  We believe your home should be built according to your taste, not someone else's design. Whether you buy one of our HMDA-approved plots in Hyderabad or already have your own plot, <strong className="text-amber-300 font-semibold">Mee Illu, Mee Istam</strong> gives you full freedom. As an architecture and construction company, we don't force fixed plans on you. Instead, our team works directly with you to design your house just the way you want it, build it with top quality, and hand over the keys to your dream home.
+                  We believe your home should be built according to your taste, not someone else&apos;s design. Whether you buy one of our HMDA-approved plots in Hyderabad or already have your own plot, <strong className="text-amber-300 font-semibold">Mee Illu, Mee Istam</strong> gives you full freedom. As an architecture and construction company, we don&apos;t force fixed plans on you. Instead, our team works directly with you to design your house just the way you want it, build it with top quality, and hand over the keys to your dream home.
                 </p>
               </div>
 
@@ -139,12 +139,13 @@ export default function MeeIlluMeeIstamPage() {
               📞 Direct Helpline: {HOUSE_AD.phone}
             </a>
           </div>
-          <div className="relative aspect-[1024/394] w-full overflow-hidden rounded-xl border border-amber-200 bg-[#faf6ee] shadow-inner">
+          <div className="flex items-center justify-center w-full overflow-hidden rounded-xl border border-amber-200 bg-[#faf6ee] shadow-inner">
             <Image
               src={HOUSE_AD.bannerImage}
               alt="Mee Illu Mee Istam Full Campaign Banner"
-              fill
-              className="object-contain object-center"
+              width={1024}
+              height={394}
+              className="w-full h-auto object-contain"
               sizes="(max-width: 1200px) 100vw, 1200px"
             />
           </div>

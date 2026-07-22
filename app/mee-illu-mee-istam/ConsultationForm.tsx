@@ -105,7 +105,7 @@ Notes: ${formData.notes || "Interested in Mee Illu, Mee Istam consultation"}`;
                 rel="noopener noreferrer"
                 className="mt-2 inline-flex items-center gap-2 text-sm font-bold text-teal-700 hover:underline"
               >
-                Click here if WhatsApp didn't open automatically →
+                Click here if WhatsApp didn&apos;t open automatically →
               </a>
             </div>
           ) : (
