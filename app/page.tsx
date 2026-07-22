@@ -12,6 +12,7 @@ import { Highlights } from "@/components/home/Highlights";
 import { JournalSidebar } from "@/components/home/JournalSidebar";
 import { LocalNews } from "@/components/home/LocalNews";
 import { NewsFeed } from "@/components/home/NewsFeed";
+import { TopBannerAd } from "@/components/home/TopBannerAd";
 
 export const revalidate = 60;
 
@@ -25,6 +26,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <TopBannerAd />
       <Hero stats={stats} />
       <Highlights />
       <AdPlaceholder />
