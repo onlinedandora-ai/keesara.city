@@ -49,5 +49,8 @@ export const SITE = {
   name: "keesara.city",
   tagline: "Keesara, Telangana — local & unfiltered",
   description:
-    "The local journal and business directory built for Keesara, by Keesara.",
+    "The local journal and business directory built for Keesara, powered by Online Dandora AI.",
+  author: "onlinedandora-ai",
+  brand: "Online Dandora AI",
+  github: "https://github.com/onlinedandora-ai/keesara.city",
 } as const;

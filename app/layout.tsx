@@ -26,6 +26,8 @@ export const metadata: Metadata = {
     template: `%s | ${SITE.name}`,
   },
   description: SITE.description,
+  authors: [{ name: SITE.brand, url: SITE.github }],
+  publisher: SITE.brand,
 };
 
 export default function RootLayout({
