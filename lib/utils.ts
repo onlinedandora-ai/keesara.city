@@ -1,5 +1,5 @@
 export function cn(...classes: Array<string | false | null | undefined>) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(" ").trim();
 }
 
 export function formatRelativeTime(dateString: string) {
@@ -22,11 +22,16 @@ export function formatRelativeTime(dateString: string) {
   });
 }
 
-export function getInitials(name: string) {
-  return name
-    .split(" ")
-    .map((part) => part[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
+export function getInitials(name?: string | null) {
+  if (!name || !name.trim()) return "?";
+  return (
+    name
+      .trim()
+      .split(/\s+/)
+      .map((part) => part[0])
+      .filter(Boolean)
+      .join("")
+      .slice(0, 2)
+      .toUpperCase() || "?"
+  );
 }

@@ -50,6 +50,7 @@ export function parseMapsCoordinates(url: string): {
   lat: number | null;
   lng: number | null;
 } {
+  if (!url) return { lat: null, lng: null };
   try {
     const decoded = decodeURIComponent(url);
 
@@ -63,9 +64,19 @@ export function parseMapsCoordinates(url: string): {
       return { lat: Number(qMatch[1]), lng: Number(qMatch[2]) };
     }
 
-    const llMatch = decoded.match(/[?&]ll=(-?\d+\.\d+),(-?\d+\.\d+)/);
+    const centerMatch = decoded.match(/[?&]center=(-?\d+\.\d+),(-?\d+\.\d+)/);
+    if (centerMatch) {
+      return { lat: Number(centerMatch[1]), lng: Number(centerMatch[2]) };
+    }
+
+    const llMatch = decoded.match(/[?&](?:ll|sll)=(-?\d+\.\d+),(-?\d+\.\d+)/);
     if (llMatch) {
       return { lat: Number(llMatch[1]), lng: Number(llMatch[2]) };
+    }
+
+    const pathMatch = decoded.match(/(?:place|dir|search)\/(-?\d+\.\d+),(-?\d+\.\d+)/);
+    if (pathMatch) {
+      return { lat: Number(pathMatch[1]), lng: Number(pathMatch[2]) };
     }
 
     const placeMatch = decoded.match(/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/);
@@ -73,7 +84,7 @@ export function parseMapsCoordinates(url: string): {
       return { lat: Number(placeMatch[1]), lng: Number(placeMatch[2]) };
     }
   } catch {
-    // ignore
+    // ignore malformed URLs gracefully
   }
   return { lat: null, lng: null };
 }

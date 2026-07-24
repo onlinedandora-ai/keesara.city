@@ -16,7 +16,7 @@ export function LocalNews({ posts }: LocalNewsProps) {
           <h2 className="text-2xl font-bold text-teal-950 md:text-3xl">Local news</h2>
           <Link
             href="/journal"
-            className="flex items-center gap-1 text-sm font-semibold text-teal-700 hover:text-teal-900 transition-colors"
+            className="flex items-center gap-1 text-sm font-semibold text-teal-700 hover:text-teal-900"
           >
             View all <span aria-hidden="true">→</span>
           </Link>
@@ -36,7 +36,7 @@ export function LocalNews({ posts }: LocalNewsProps) {
             return (
               <article
                 key={post.id}
-                className="flex flex-col justify-between rounded-2xl border border-line bg-white p-6 shadow-xs transition-shadow hover:shadow-md"
+                className="flex flex-col justify-between rounded-2xl border border-line bg-white p-6 shadow-xs"
               >
                 <div>
                   {post.category && (

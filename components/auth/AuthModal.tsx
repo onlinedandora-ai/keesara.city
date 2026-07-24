@@ -4,7 +4,6 @@ import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useApp } from "@/components/providers/AppProvider";
 import { Button } from "@/components/ui/Button";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 type AuthModalProps = {
   open: boolean;
@@ -104,18 +103,24 @@ export function AuthModal({ open, onClose }: AuthModalProps) {
   const signInWithGitHub = async () => {
     setLoading(true);
     setError(null);
-    const { error: oauthError } = await supabase.auth.signInWithOAuth({
-      provider: "github",
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-      },
-    });
-    if (oauthError) {
-      setError(
-        oauthError.message.includes("provider is not enabled")
-          ? "GitHub login isn’t enabled in Supabase Auth settings yet. Ask admin to turn on GitHub provider."
-          : oauthError.message,
-      );
+    try {
+      const { error: oauthError } = await supabase.auth.signInWithOAuth({
+        provider: "github",
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback`,
+        },
+      });
+      if (oauthError) {
+        setError(
+          oauthError.message.includes("provider is not enabled")
+            ? "GitHub login isn’t enabled in Supabase Auth settings yet."
+            : oauthError.message,
+        );
+        setLoading(false);
+      }
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Failed to initiate sign in";
+      setError(`Authentication error: ${msg}. Make sure your Supabase URL and Anon Key in .env.local are valid.`);
       setLoading(false);
     }
   };
@@ -123,22 +128,28 @@ export function AuthModal({ open, onClose }: AuthModalProps) {
   const signInWithGoogle = async () => {
     setLoading(true);
     setError(null);
-    const { error: oauthError } = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-        queryParams: {
-          access_type: "offline",
-          prompt: "consent",
+    try {
+      const { error: oauthError } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback`,
+          queryParams: {
+            access_type: "offline",
+            prompt: "consent",
+          },
         },
-      },
-    });
-    if (oauthError) {
-      setError(
-        oauthError.message.includes("provider is not enabled")
-          ? "Google login isn’t enabled yet. Use phone OTP or GitHub."
-          : oauthError.message,
-      );
+      });
+      if (oauthError) {
+        setError(
+          oauthError.message.includes("provider is not enabled")
+            ? "Google login provider is not enabled in Supabase config or dashboard."
+            : oauthError.message,
+        );
+        setLoading(false);
+      }
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Failed to initiate sign in";
+      setError(`Authentication error: ${msg}. Make sure your Supabase URL and Anon Key in .env.local are valid.`);
       setLoading(false);
     }
   };
@@ -165,17 +176,14 @@ export function AuthModal({ open, onClose }: AuthModalProps) {
           <h2 id="auth-title" className="text-lg font-bold text-teal-900">
             {step === "phone" ? "Login with phone" : "Enter OTP"}
           </h2>
-          <div className="flex items-center gap-2">
-            <ThemeToggle variant="pill" showLabel={false} />
-            <button
-              type="button"
-              onClick={close}
-              className="ml-1 rounded-lg p-1 text-ink-mute hover:bg-paper hover:text-ink transition-colors"
-              aria-label="Close"
-            >
-              ✕
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={close}
+            className="rounded-lg p-1 text-ink-mute hover:bg-paper hover:text-ink transition-colors"
+            aria-label="Close"
+          >
+            ✕
+          </button>
         </div>
 
         {step === "phone" ? (
@@ -294,10 +302,7 @@ export function AuthModal({ open, onClose }: AuthModalProps) {
           </Button>
         </div>
 
-        <div className="mt-5 pt-4 border-t border-line flex items-center justify-between text-xs text-ink-soft">
-          <span>Appearance theme</span>
-          <ThemeToggle variant="button" showLabel={true} />
-        </div>
+
         <div className="mt-3 text-center text-xs text-ink-mute">
           Powered by{" "}
           <a

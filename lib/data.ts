@@ -26,6 +26,8 @@ const FALLBACK_CATEGORIES: Category[] = [
   { id: "cat-7", slug: "transport", name: "Transport & Fuel", sort_order: 7 },
 ];
 
+const STATIC_FALLBACK_DATE = "2026-07-24T00:00:00Z";
+
 // Scraped Google Maps place seed data for Keesara & ORR Exit 8 corridor
 const FALLBACK_BUSINESSES: Business[] = [
   // --- REAL ESTATE & BUILDERS ---
@@ -46,7 +48,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: true,
     rating: 4.9,
     review_count: 87,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "real-estate", name: "Real estate" },
   },
   {
@@ -66,7 +68,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: true,
     rating: 4.8,
     review_count: 94,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "real-estate", name: "Real estate" },
   },
   {
@@ -86,7 +88,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: true,
     rating: 4.7,
     review_count: 52,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "real-estate", name: "Real estate" },
   },
   {
@@ -106,7 +108,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: true,
     rating: 4.6,
     review_count: 43,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "real-estate", name: "Real estate" },
   },
   {
@@ -126,7 +128,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: false,
     rating: 4.4,
     review_count: 29,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "real-estate", name: "Real estate" },
   },
   {
@@ -146,7 +148,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: false,
     rating: 4.5,
     review_count: 76,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "real-estate", name: "Real estate" },
   },
 
@@ -168,7 +170,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: true,
     rating: 4.6,
     review_count: 112,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "healthcare", name: "Healthcare & Wellness" },
   },
   {
@@ -188,7 +190,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: true,
     rating: 4.5,
     review_count: 64,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "healthcare", name: "Healthcare & Wellness" },
   },
   {
@@ -208,7 +210,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: false,
     rating: 4.3,
     review_count: 58,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "healthcare", name: "Healthcare & Wellness" },
   },
   {
@@ -228,7 +230,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: false,
     rating: 4.7,
     review_count: 81,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "healthcare", name: "Healthcare & Wellness" },
   },
   {
@@ -248,7 +250,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: false,
     rating: 4.4,
     review_count: 49,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "healthcare", name: "Healthcare & Wellness" },
   },
   {
@@ -268,7 +270,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: true,
     rating: 4.6,
     review_count: 120,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "healthcare", name: "Healthcare & Wellness" },
   },
   {
@@ -288,7 +290,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: true,
     rating: 4.3,
     review_count: 95,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "healthcare", name: "Healthcare & Wellness" },
   },
   {
@@ -308,7 +310,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: true,
     rating: 4.8,
     review_count: 64,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "healthcare", name: "Healthcare & Wellness" },
   },
   {
@@ -328,7 +330,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: true,
     rating: 5.0,
     review_count: 48,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "real-estate", name: "Real estate" },
   },
   {
@@ -348,7 +350,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: true,
     rating: 5.0,
     review_count: 52,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "real-estate", name: "Real estate" },
   },
   {
@@ -368,7 +370,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: true,
     rating: 4.8,
     review_count: 180,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "food-retail", name: "Business & Retail" },
   },
 
@@ -390,7 +392,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: true,
     rating: 4.6,
     review_count: 128,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "food-retail", name: "Business & Retail" },
   },
   {
@@ -410,7 +412,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: true,
     rating: 4.5,
     review_count: 210,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "food-retail", name: "Business & Retail" },
   },
   {
@@ -430,7 +432,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: false,
     rating: 4.4,
     review_count: 45,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "food-retail", name: "Business & Retail" },
   },
 
@@ -452,7 +454,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: true,
     rating: 4.8,
     review_count: 145,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "education", name: "Education" },
   },
   {
@@ -472,7 +474,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: true,
     rating: 4.6,
     review_count: 310,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "education", name: "Education" },
   },
 
@@ -494,7 +496,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     is_featured: true,
     rating: 4.9,
     review_count: 1420,
-    created_at: new Date().toISOString(),
+    created_at: STATIC_FALLBACK_DATE,
     categories: { slug: "civic", name: "Civic & Public" },
   },
 ];
@@ -604,6 +606,7 @@ export async function getNewsPostById(id: string): Promise<NewsPost | null> {
     .from("news_posts")
     .select("*, profiles(display_name)")
     .eq("id", id)
+    .eq("status", "live")
     .single();
   if (error || !data) return null;
   const [withStats] = await attachNewsStats([data as NewsPost]);
@@ -614,10 +617,13 @@ async function attachNewsStats(posts: NewsPost[]): Promise<NewsPost[]> {
   if (posts.length === 0) return [];
   const supabase = await createClient();
   const ids = posts.map((p) => p.id);
-  const { data: stats } = await supabase
+  const { data: stats, error } = await supabase
     .from("news_post_stats")
     .select("*")
     .in("post_id", ids);
+  if (error) {
+    console.error("Error fetching news_post_stats:", error);
+  }
   const statsMap = new Map((stats ?? []).map((s) => [s.post_id, s]));
   return posts.map((post) => ({
     ...post,
@@ -779,9 +785,9 @@ export async function searchSite(query: string) {
   ]);
 
   const news = await attachNewsStats((newsResult.data ?? []) as NewsPost[]);
-  const fetchedBusinesses = (businessesResult.data ?? []) as Business[];
 
-  if (fetchedBusinesses.length === 0) {
+  if (businessesResult.error) {
+    console.error("Error fetching businesses search from Supabase:", businessesResult.error);
     const searchTerm = query.trim().toLowerCase();
     const fallbackMatches = FALLBACK_BUSINESSES.filter(
       (b) =>
@@ -793,7 +799,7 @@ export async function searchSite(query: string) {
   }
 
   return {
-    businesses: fetchedBusinesses,
+    businesses: (businessesResult.data ?? []) as Business[],
     news,
   };
 }
