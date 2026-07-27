@@ -9,6 +9,7 @@ import {
   useState,
 } from "react";
 import type { SupabaseClient, User } from "@supabase/supabase-js";
+import { getSupabaseEnv } from "@/lib/supabase/env";
 import { createClient } from "@/lib/supabase/client";
 import { AuthModal } from "@/components/auth/AuthModal";
 import { PostNewsSheet } from "@/components/news/PostNewsSheet";
@@ -34,18 +35,23 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [postOpen, setPostOpen] = useState(false);
   const [supabase] = useState<SupabaseClient | null>(() => {
     if (typeof window !== "undefined") {
+      const { isConfigured } = getSupabaseEnv();
+      if (!isConfigured) return null;
       return createClient();
     }
     return null;
   });
-  const [theme, setThemeState] = useState<"light" | "dark">(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("theme") as "light" | "dark" | null;
-      if (saved === "dark" || saved === "light") return saved;
-      return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  const [theme, setThemeState] = useState<"light" | "dark">("light");
+
+  // Read theme preference client-side after mount to avoid SSR hydration mismatch
+  useEffect(() => {
+    const saved = localStorage.getItem("theme") as "light" | "dark" | null;
+    if (saved === "dark" || saved === "light") {
+      setThemeState(saved);
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setThemeState("dark");
     }
-    return "light";
-  });
+  }, []);
 
   // Sync DOM dark class when theme changes
   useEffect(() => {
