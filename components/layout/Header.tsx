@@ -37,7 +37,7 @@ export function Header() {
         </div>
 
         <div className="hidden shrink-0 items-center gap-2 md:flex sm:gap-2.5">
-          <ThemeToggle variant="pill" showLabel={false} />
+          <ThemeToggle showLabel={false} />
           <Button variant="ghost" size="sm" onClick={openPostNews}>
             Post news
           </Button>
