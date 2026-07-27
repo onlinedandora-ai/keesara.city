@@ -1,91 +1,113 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useApp } from "@/components/providers/AppProvider";
 
-const tabs = [
-  { href: "/", label: "Home", icon: "⌂" },
-  { href: "/directory", label: "Directory", icon: "☰" },
-  { href: "post", label: "Post", icon: "✎" },
-  { href: "auth", label: "Login", icon: "◎" },
-  { href: "theme", label: "Theme", icon: "🌓" },
-] as const;
-
-export function MobileNav() {
+function MobileNavContent() {
   const pathname = usePathname();
-  const { user, openAuth, openPostNews, signOut, theme, toggleTheme } = useApp();
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams.get("category");
+  const { user, openAuth, signOut } = useApp();
+
+  const isHomeActive = pathname === "/";
+  const isPlacesActive = pathname === "/directory" && !categoryParam;
+  const isRealtyActive = pathname === "/directory" && categoryParam === "real-estate";
+  const isHealthActive = pathname === "/directory" && categoryParam === "healthcare";
+  const isLocalActive = pathname.startsWith("/news");
 
   return (
     <nav
       className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-card/95 backdrop-blur-sm md:hidden"
       aria-label="Mobile navigation"
     >
-      <div className="mx-auto grid max-w-lg grid-cols-5">
-        {tabs.map((tab) => {
-          const isActive =
-            tab.href !== "post" &&
-            tab.href !== "auth" &&
-            tab.href !== "theme" &&
-            (tab.href === "/" ? pathname === "/" : pathname.startsWith(tab.href));
+      <div className="mx-auto grid max-w-lg grid-cols-6 px-1">
+        {/* 1. Home */}
+        <Link
+          href="/"
+          className={`flex flex-col items-center gap-1 py-2 text-[11px] font-medium transition-colors ${
+            isHomeActive ? "text-teal-700 font-semibold" : "text-ink-soft hover:text-ink"
+          }`}
+        >
+          <svg className="h-5 w-5 stroke-current fill-none stroke-[1.75]" viewBox="0 0 24 24">
+            <path d="M3 12l9-9 9 9M4 10v10a1 1 0 001 1h14a1 1 0 001-1V10" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span>Home</span>
+        </Link>
 
-          if (tab.href === "post") {
-            return (
-              <button
-                key={tab.label}
-                type="button"
-                onClick={openPostNews}
-                className="flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-soft"
-              >
-                <span className="text-base">{tab.icon}</span>
-                {tab.label}
-              </button>
-            );
-          }
+        {/* 2. Places */}
+        <Link
+          href="/directory"
+          className={`flex flex-col items-center gap-1 py-2 text-[11px] font-medium transition-colors ${
+            isPlacesActive ? "text-teal-700 font-semibold" : "text-ink-soft hover:text-ink"
+          }`}
+        >
+          <svg className="h-5 w-5 stroke-current fill-none stroke-[1.75]" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span>Places</span>
+        </Link>
 
-          if (tab.href === "auth") {
-            return (
-              <button
-                key={tab.label}
-                type="button"
-                onClick={() => (user ? void signOut() : openAuth())}
-                className="flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-soft"
-              >
-                <span className="text-base">{user ? "✓" : tab.icon}</span>
-                {user ? "Logout" : tab.label}
-              </button>
-            );
-          }
+        {/* 3. Realty */}
+        <Link
+          href="/directory?category=real-estate"
+          className={`flex flex-col items-center gap-1 py-2 text-[11px] font-medium transition-colors ${
+            isRealtyActive ? "text-teal-700 font-semibold" : "text-ink-soft hover:text-ink"
+          }`}
+        >
+          <svg className="h-5 w-5 stroke-current fill-none stroke-[1.75]" viewBox="0 0 24 24">
+            <rect x="3" y="3" width="7" height="7" rx="1"/>
+            <rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="14" y="14" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/>
+          </svg>
+          <span>Realty</span>
+        </Link>
 
-          if (tab.href === "theme") {
-            return (
-              <button
-                key={tab.label}
-                type="button"
-                onClick={toggleTheme}
-                className="flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium text-ink-soft"
-                aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-              >
-                <span className="text-base">{theme === "dark" ? "🌙" : "☀️"}</span>
-                Theme
-              </button>
-            );
-          }
+        {/* 4. Health */}
+        <Link
+          href="/directory?category=healthcare"
+          className={`flex flex-col items-center gap-1 py-2 text-[11px] font-medium transition-colors ${
+            isHealthActive ? "text-teal-700 font-semibold" : "text-ink-soft hover:text-ink"
+          }`}
+        >
+          <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
+            <path d="M19 10.5h-5.5V5a1.5 1.5 0 00-3 0v5.5H5a1.5 1.5 0 000 3h5.5V19a1.5 1.5 0 003 0v-5.5H19a1.5 1.5 0 000-3z"/>
+          </svg>
+          <span>Health</span>
+        </Link>
 
-          return (
-            <Link
-              key={tab.href}
-              href={tab.href}
-              className={`flex flex-col items-center gap-0.5 py-2.5 text-xs font-medium ${
-                isActive ? "text-teal-700" : "text-ink-soft"
-              }`}
-            >
-              <span className="text-base">{tab.icon}</span>
-              {tab.label}
-            </Link>
-          );
-        })}
+        {/* 5. Local */}
+        <Link
+          href="/news"
+          className={`flex flex-col items-center gap-1 py-2 text-[11px] font-medium transition-colors ${
+            isLocalActive ? "text-teal-700 font-semibold" : "text-ink-soft hover:text-ink"
+          }`}
+        >
+          <svg className="h-5 w-5 stroke-current fill-none stroke-[1.75]" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="8"/>
+            <circle cx="12" cy="12" r="3" fill="currentColor"/>
+          </svg>
+          <span>Local</span>
+        </Link>
+
+        {/* 6. Login / Logout */}
+        <button
+          type="button"
+          onClick={() => (user ? void signOut() : openAuth())}
+          className="flex flex-col items-center gap-1 py-2 text-[11px] font-medium text-ink-soft transition-colors hover:text-ink"
+        >
+          <svg className="h-5 w-5 stroke-current fill-none stroke-[1.75]" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+          <span>{user ? "Logout" : "Login"}</span>
+        </button>
       </div>
     </nav>
   );
+}
+
+export function MobileNav() {
+  return <MobileNavContent />;
 }

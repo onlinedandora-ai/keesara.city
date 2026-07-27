@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Poppins, Merriweather } from "next/font/google";
 import { AppProvider } from "@/components/providers/AppProvider";
@@ -63,7 +64,9 @@ export default function RootLayout({
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
-          <MobileNav />
+          <Suspense fallback={null}>
+            <MobileNav />
+          </Suspense>
         </AppProvider>
       </body>
     </html>
