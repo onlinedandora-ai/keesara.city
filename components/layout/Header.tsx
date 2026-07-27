@@ -21,6 +21,11 @@ export function Header() {
           <span>{SITE.name}</span>
         </Link>
 
+        {/* Mobile Sun/Moon theme toggle button */}
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle showLabel={false} />
+        </div>
+
         <div className="hidden items-center gap-5 text-sm font-medium text-ink-soft md:flex lg:gap-7">
           <Link href="/directory" className="transition-colors hover:text-teal-700">
             Directory
