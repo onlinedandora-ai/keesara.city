@@ -296,8 +296,32 @@ export default function MeeIlluMeeIstamPage() {
             </div>
           </div>
 
-          {/* Bottom Villa Photo & Inventory Alert */}
-          <div className="px-6 sm:px-10 py-6 space-y-4">
+          {/* Master Layout Plan & Villa Architecture Showcase */}
+          <div className="px-6 sm:px-10 py-6 space-y-6">
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight">
+                  320+ Open Plots Master Layout Plan
+                </h3>
+                <span className="rounded bg-emerald-100 text-emerald-800 font-bold text-[10px] px-2 py-0.5 uppercase tracking-wide">
+                  HMDA Sanctioned
+                </span>
+              </div>
+              <p className="text-xs text-slate-600">
+                40&apos; & 30&apos; wide blacktop roads, 13,550+ Sq.M of dedicated parks, 2,779 Sq.M social infrastructure, and grand entry from ECIL-Keesara Highway.
+              </p>
+            </div>
+
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-slate-300 shadow-md bg-slate-900">
+              <Image
+                src={HOUSE_AD.masterLayoutImage}
+                alt="320+ Luxury Gated Community Open Plots Master Layout Map"
+                fill
+                className="object-contain object-center"
+                sizes="(max-width: 1024px) 100vw, 896px"
+              />
+            </div>
+
             <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-slate-300 shadow-md bg-slate-900">
               <Image
                 src="/images/mee-illu-mee-istam/villa-contemporary.jpg"

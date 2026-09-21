@@ -47,6 +47,7 @@ export const HOUSE_AD = {
   heroImage: "/images/mee-illu-mee-istam/hero-square.jpg",
   logoImage: "/images/mee-illu-mee-istam/mee-illu-logo.png",
   aerialMapImage: "/images/mee-illu-mee-istam/exit8-aerial-map.jpg",
+  masterLayoutImage: "/images/mee-illu-mee-istam/master-layout-plan.jpg",
   hmdaLogo: "/images/mee-illu-mee-istam/hmda-logo.jpg",
   brochurePdf: "/keesara-city-brochure.pdf",
   phone: "+91 90100 28800",
