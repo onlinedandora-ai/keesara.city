@@ -80,19 +80,25 @@ export const CONNECTIVITY_HIGHLIGHTS = [
 
 export const DESIGN_STYLES = [
   {
-    title: "Traditional Architecture",
-    tag: "Heritage & Vastu",
-    description: "Classic elevation with rich stone accents, decorative pillars, teakwood main doors, and vastu-compliant spacious living areas.",
+    id: "contemporary",
+    title: "Contemporary Villa",
+    tag: "Modern & Stone Accents",
+    image: "/images/mee-illu-mee-istam/villa-contemporary.jpg",
+    description: "Two-storey bespoke residence with textured stone facade, floor-to-ceiling glass, private balcony lounge, and horizontal architectural privacy gate.",
   },
   {
-    title: "Contemporary Living",
-    tag: "Modern & Green",
-    description: "Expansive glass facades, open-concept floor plans, lush terrace gardens, cantilever balconies, and ample natural sunlight.",
+    id: "luxury",
+    title: "Modern Minimalist",
+    tag: "Wide Facade & Louvers",
+    image: "/images/mee-illu-mee-istam/villa-modern.jpg",
+    description: "Sleek low-profile horizontal architecture featuring timber louvers, expansive glass openings, private manicured front lawn, and perimeter boundary.",
   },
   {
-    title: "Minimalist Luxury",
-    tag: "Sleek & Smart",
-    description: "Clean geometric profiles, subtle ambient lighting, energy-efficient insulation, smart home integration, and premium designer finishes.",
+    id: "minimalist",
+    title: "Geometric Luxury",
+    tag: "Pristine Frame & Lighting",
+    image: "/images/mee-illu-mee-istam/villa-minimalist.jpg",
+    description: "Striking cubic frame architecture with vertical wood slats, seamless glass balustrade, integrated architectural sconces, and dual entrance gate.",
   },
 ] as const;
 
