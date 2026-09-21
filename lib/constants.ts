@@ -70,37 +70,141 @@ export const ORR_PRICE_COMPARISON = [
 ] as const;
 
 export const CONNECTIVITY_HIGHLIGHTS = [
-  { name: "Jubilee Hills School", distance: "2 km", label: "Education" },
-  { name: "KLR Industrial Park", distance: "2 km", label: "Industrial" },
-  { name: "Ghatkesar ORR", distance: "4 km", label: "Highway" },
-  { name: "DRDL Township", distance: "4 km", label: "Township" },
-  { name: "MMTS Station", distance: "5 km", label: "Transit" },
-  { name: "Genpact & Infosys", distance: "6 km", label: "IT Hub" },
+  { name: "GHATKESAR ORR", distance: "4 km", label: "Highway" },
+  { name: "JUBILEE HILLS SCHOOL", distance: "2 km", label: "Education" },
+  { name: "KLR INDUSTRIAL PARK", distance: "2 km", label: "Industrial" },
+  { name: "DRDL TOWNSHIP", distance: "4 km", label: "Township" },
+  { name: "MMTS", distance: "5 km", label: "Transit" },
+  { name: "GENPACT & INFOSYS", distance: "6 km", label: "IT Hub" },
 ] as const;
 
 export const DESIGN_STYLES = [
   {
-    id: "contemporary",
-    title: "Contemporary Villa",
-    tag: "Modern & Stone Accents",
-    image: "/images/mee-illu-mee-istam/villa-contemporary.jpg",
-    description: "Two-storey bespoke residence with textured stone facade, floor-to-ceiling glass, private balcony lounge, and horizontal architectural privacy gate.",
+    id: "traditional",
+    title: "Traditional Elegance",
+    tag: "Artisanal Jali & Sandstone",
+    image: "/images/mee-illu-mee-istam/villa-traditional.jpg",
+    description: "Two-storey timeless residence with earthy sandstone masonry, decorative jali lattice boundary wall, and warm teak accents.",
   },
   {
-    id: "luxury",
-    title: "Modern Minimalist",
-    tag: "Wide Facade & Louvers",
-    image: "/images/mee-illu-mee-istam/villa-modern.jpg",
-    description: "Sleek low-profile horizontal architecture featuring timber louvers, expansive glass openings, private manicured front lawn, and perimeter boundary.",
+    id: "minimalist-pavilion",
+    title: "Minimalist Pavilion",
+    tag: "Open Green & Timber Slats",
+    image: "/images/mee-illu-mee-istam/villa-pavilion.jpg",
+    description: "Low-slung single-storey pavilion architecture set amidst open lawn with vertical timber screens and outdoor patio dining.",
   },
   {
-    id: "minimalist",
-    title: "Geometric Luxury",
-    tag: "Pristine Frame & Lighting",
-    image: "/images/mee-illu-mee-istam/villa-minimalist.jpg",
-    description: "Striking cubic frame architecture with vertical wood slats, seamless glass balustrade, integrated architectural sconces, and dual entrance gate.",
+    id: "contemporary-luxury",
+    title: "Contemporary Luxury",
+    tag: "Geometric Frame & Glass",
+    image: "/images/mee-illu-mee-istam/villa-02.jpg",
+    description: "Striking cubic frame architecture with vertical wood louvers, seamless glass balustrade, and integrated sconce illumination.",
   },
 ] as const;
+
+export const ALL_VILLA_DESIGNS = [
+  {
+    id: "1",
+    title: "Traditional Elegance Villa",
+    tag: "Traditional",
+    image: "/images/mee-illu-mee-istam/villa-traditional.jpg",
+    description: "Artisanal sandstone facade, traditional jali compound wall, warm wood trims, and grand entrance foyer.",
+  },
+  {
+    id: "2",
+    title: "Minimalist Meadow Pavilion",
+    tag: "Minimalist",
+    image: "/images/mee-illu-mee-istam/villa-pavilion.jpg",
+    description: "Single-level expansive living pavilion with covered timber porch, fireplace chimney, and panoramic meadow views.",
+  },
+  {
+    id: "3",
+    title: "Geometric Frame Luxury Residence",
+    tag: "Geometric Luxury",
+    image: "/images/mee-illu-mee-istam/villa-02.jpg",
+    description: "Cubic white cantilevered frame, seamless glass balustrade, vertical slat accents, and architectural sconce lighting.",
+  },
+  {
+    id: "4",
+    title: "Horizontal Timber Louver Villa",
+    tag: "Modern Minimalist",
+    image: "/images/mee-illu-mee-istam/villa-01.jpg",
+    description: "Sleek horizontal architecture with natural wood vertical louvers, private boundary wall, and wide front landscaping.",
+  },
+  {
+    id: "5",
+    title: "Contemporary Stone Accent Villa",
+    tag: "Contemporary",
+    image: "/images/mee-illu-mee-istam/villa-03.jpg",
+    description: "Richly textured stone masonry, spacious upper terrace balcony, and modern horizontal charcoal privacy gate.",
+  },
+  {
+    id: "6",
+    title: "Warm Illumination Modern Villa",
+    tag: "Architectural Lighting",
+    image: "/images/mee-illu-mee-istam/villa-04.jpg",
+    description: "Bespoke dusk illumination, warm wood ceiling soffits, expansive corner glass, and designer gate piers.",
+  },
+  {
+    id: "7",
+    title: "Night Ambient Louver Residence",
+    tag: "Modern Minimalist",
+    image: "/images/mee-illu-mee-istam/villa-night-louver.jpg",
+    description: "Warm boundary uplighting, wood-clad upper volume, tinted sliding glass doors, and secure louvered gate.",
+  },
+  {
+    id: "8",
+    title: "Dusk Stone & Glass Estate",
+    tag: "Contemporary Luxury",
+    image: "/images/mee-illu-mee-istam/villa-evening-stone.jpg",
+    description: "Floor-to-ceiling glass living hall, natural brick facade, ambient sconce lighting, and designer sliding gate.",
+  },
+  {
+    id: "9",
+    title: "Twilight Garden Terrace Residence",
+    tag: "Luxury Terrace",
+    image: "/images/mee-illu-mee-istam/villa-twilight-garden.jpg",
+    description: "Multi-level evening illumination with landscaped terrace garden, exposed stone wall, and illuminated driveway piers.",
+  },
+  {
+    id: "10",
+    title: "Daylight Minimalist Frame Villa",
+    tag: "Modern Minimalist",
+    image: "/images/mee-illu-mee-istam/hero-villa-cover.jpg",
+    description: "Expansive white geometric box architecture, dark garage portico, and upper floor panoramic balcony with glass balustrade.",
+  },
+  {
+    id: "11",
+    title: "Textured Facade Contemporary Duplex",
+    tag: "Contemporary",
+    image: "/images/mee-illu-mee-istam/villa-05.jpg",
+    description: "Sophisticated blend of natural earthy stone tiles, glass balcony railing, and landscaped front verge.",
+  },
+  {
+    id: "12",
+    title: "Minimalist Dual-Level Villa",
+    tag: "Minimalist",
+    image: "/images/mee-illu-mee-istam/villa-06.jpg",
+    description: "Double height glass windows, vertical timber privacy screening, and clean cubic volumes.",
+  },
+  {
+    id: "13",
+    title: "Grand Estate Villa",
+    tag: "Luxury",
+    image: "/images/mee-illu-mee-istam/villa-07.jpg",
+    description: "Wide double-storey layout with expansive terrace sundeck, large family lounge, and grand driveway gate.",
+  },
+  {
+    id: "14",
+    title: "Scandinavian Modern Villa",
+    tag: "Contemporary",
+    image: "/images/mee-illu-mee-istam/villa-10.jpg",
+    description: "Harmonious wood and stone proportions, wide sliding glass doors, and integrated carport entry.",
+  },
+] as const;
+
+
+
 
 export const SITE = {
   name: process.env.NEXT_PUBLIC_SITE_NAME || "keesara.city",

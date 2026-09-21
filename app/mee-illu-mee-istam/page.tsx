@@ -7,7 +7,9 @@ import {
   CONNECTIVITY_HIGHLIGHTS,
   DESIGN_STYLES,
 } from "@/lib/constants";
+import { BrochureHeader } from "./BrochureHeader";
 import { ConsultationForm } from "./ConsultationForm";
+import { VillaGallery } from "./VillaGallery";
 
 export const metadata: Metadata = {
   title: "Keesara.city — KVR Landmark-2 @ Keesara (HMDA Approved · 25.5 Acres)",
@@ -25,65 +27,8 @@ export default function MeeIlluMeeIstamPage() {
   return (
     <div className="min-h-screen bg-[#1e232d] text-slate-800 antialiased selection:bg-[#D96B43] selection:text-white pb-24">
       
-      {/* ========================================================
-          STICKY TOP CONTROL BAR
-         ======================================================== */}
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#111622]/95 backdrop-blur-md px-4 sm:px-8 py-3 text-white shadow-xl">
-        <div className="mx-auto flex max-w-5xl items-center justify-between gap-3">
-          
-          <div className="flex items-center gap-3">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-amber-400 hover:text-amber-300 transition-colors"
-            >
-              <span>← Keesara.city</span>
-            </Link>
-            <span className="text-white/20 hidden sm:inline">|</span>
-            <span className="hidden sm:inline-block text-xs font-semibold text-slate-300 uppercase tracking-widest font-serif">
-              Official Brochure
-            </span>
-          </div>
-
-          {/* Quick Page Jump Pills */}
-          <nav className="hidden lg:flex items-center gap-1.5 text-[11px] font-bold">
-            <a href="#page-1" className="rounded-md bg-white/10 px-2.5 py-1 text-slate-200 hover:bg-[#D96B43] hover:text-white transition-colors">
-              01 Cover
-            </a>
-            <a href="#page-2" className="rounded-md bg-white/10 px-2.5 py-1 text-slate-200 hover:bg-[#D96B43] hover:text-white transition-colors">
-              02 Location
-            </a>
-            <a href="#page-3" className="rounded-md bg-white/10 px-2.5 py-1 text-slate-200 hover:bg-[#D96B43] hover:text-white transition-colors">
-              03 Exit 8 Advantage
-            </a>
-            <a href="#page-4" className="rounded-md bg-white/10 px-2.5 py-1 text-slate-200 hover:bg-[#D96B43] hover:text-white transition-colors">
-              04 Designs
-            </a>
-            <a href="#page-5" className="rounded-md bg-white/10 px-2.5 py-1 text-slate-200 hover:bg-[#D96B43] hover:text-white transition-colors">
-              05 Contact
-            </a>
-          </nav>
-
-          <div className="flex items-center gap-2 sm:gap-3">
-            <a
-              href={HOUSE_AD.brochurePdf}
-              download
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-lg border border-amber-500/40 bg-amber-500/15 px-3 py-1.5 text-xs font-bold text-amber-300 shadow-xs hover:bg-amber-500 hover:text-amber-950 transition-all"
-            >
-              <span>📥 Download PDF</span>
-            </a>
-
-            <a
-              href={`tel:${HOUSE_AD.phoneRaw}`}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-[#D96B43] px-3.5 py-1.5 text-xs font-bold text-white shadow-md hover:bg-[#c25932] transition-colors"
-            >
-              <span>📞 {HOUSE_AD.phone}</span>
-            </a>
-          </div>
-
-        </div>
-      </header>
+      {/* Sticky Top Control Bar with clean Back Navigation & Smooth Page Jumps */}
+      <BrochureHeader />
 
       {/* Main Multi-Page Brochure Container */}
       <main className="mx-auto max-w-4xl px-3 sm:px-6 pt-6 sm:pt-10 space-y-12 sm:space-y-16">
@@ -462,7 +407,11 @@ export default function MeeIlluMeeIstamPage() {
             <p className="mt-6 text-center text-xs text-slate-600 font-medium">
               Traditional, contemporary, or minimalist — the design is yours to choose.
             </p>
+
+            {/* Complete 10 Elevation Design Gallery */}
+            <VillaGallery whatsapp={HOUSE_AD.whatsapp} />
           </div>
+
 
           {/* Page 4 Terracotta Footer Bar */}
           <div className="bg-[#C85A32] text-white px-6 sm:px-10 py-3.5 flex items-center justify-between font-bold text-xs sm:text-sm">

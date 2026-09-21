@@ -10,6 +10,10 @@ function MobileNavContent() {
   const categoryParam = searchParams.get("category");
   const { user, openAuth, signOut } = useApp();
 
+  if (pathname === "/mee-illu-mee-istam") {
+    return null;
+  }
+
   const isHomeActive = pathname === "/";
   const isPlacesActive = pathname === "/directory" && !categoryParam;
   const isRealtyActive = pathname === "/directory" && categoryParam === "real-estate";

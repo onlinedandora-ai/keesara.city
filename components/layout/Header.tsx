@@ -13,6 +13,10 @@ export function Header() {
   const { user, openAuth, openPostNews, signOut } = useApp();
   const isHome = pathname === "/";
 
+  if (pathname === "/mee-illu-mee-istam") {
+    return null;
+  }
+
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-paper/92 backdrop-blur-sm">
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 md:py-4">
