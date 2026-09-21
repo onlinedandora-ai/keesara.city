@@ -3,18 +3,27 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 
-type ConsultationFormProps = {
+export type ConsultationFormProps = {
   phone: string;
+  phoneRaw: string;
   whatsapp: string;
+  email?: string;
+  brochurePdf?: string;
 };
 
-export function ConsultationForm({ phone, whatsapp }: ConsultationFormProps) {
+export function ConsultationForm({
+  phone,
+  phoneRaw,
+  whatsapp,
+  email = "keesaracity.info@gmail.com",
+  brochurePdf = "/keesara-city-brochure.pdf",
+}: ConsultationFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    plotStatus: "own-plot",
-    houseType: "duplex",
+    plotStatus: "visit-layout",
+    houseType: "Independent Villa",
     notes: "",
   });
 
@@ -24,10 +33,15 @@ export function ConsultationForm({ phone, whatsapp }: ConsultationFormProps) {
 
     setSubmitted(true);
 
-    const message = `Hi Keesara Builders! My name is ${formData.name} (${formData.phone}).
-Plot Status: ${formData.plotStatus === "own-plot" ? "I have my own plot" : "Looking for HMDA approved plot"}
-House Type: ${formData.houseType}
-Notes: ${formData.notes || "Interested in Mee Illu, Mee Istam consultation"}`;
+    let statusText = "Book a Site Visit to KVR Landmark-2 (Exit 8)";
+    if (formData.plotStatus === "own-plot") statusText = "I have my own plot (Need custom construction)";
+    if (formData.plotStatus === "hmda-plot") statusText = "Looking for HMDA Approved Plot + Custom House";
+
+    const message = `Hi Keesara City / KVR Landmark-2 Team!
+My name is ${formData.name} (${formData.phone}).
+Interest: ${statusText}
+Preferred Style: ${formData.houseType}
+Notes: ${formData.notes || "Please share available plots layout and schedule a consultation/site visit."}`;
 
     const url = `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`;
     setTimeout(() => {
@@ -42,13 +56,13 @@ Notes: ${formData.notes || "Interested in Mee Illu, Mee Istam consultation"}`;
         <div className="lg:col-span-5 bg-gradient-to-br from-teal-950 via-slate-900 to-amber-950 p-8 text-white flex flex-col justify-between">
           <div className="space-y-6">
             <span className="inline-block rounded-full bg-amber-500/20 px-3 py-1 text-xs font-semibold text-amber-300 border border-amber-500/30">
-              FREE CONSULTATION
+              FREE CONSULTATION & SITE VISIT
             </span>
             <h3 className="text-2xl font-bold text-white leading-tight">
-              Design Your House Just the Way You Want It
+              Walk the Site & Design Your Dream Home
             </h3>
             <p className="text-sm text-amber-100/80 leading-relaxed">
-              Our engineering & architecture team works directly with you. Fill in your details or connect with us directly via Phone or WhatsApp.
+              Walk the site, explore 320+ HMDA-approved plots just 300m from ORR Exit 8, or consult our architecture team for building on your own plot.
             </p>
 
             <div className="space-y-4 pt-4 border-t border-white/10">
@@ -58,7 +72,7 @@ Notes: ${formData.notes || "Interested in Mee Illu, Mee Istam consultation"}`;
                 </div>
                 <div>
                   <span className="block text-xs text-amber-200/70 font-medium">Direct Phone Helpline</span>
-                  <a href={`tel:+919177000848`} className="text-base font-bold text-white hover:text-amber-300 transition-colors">
+                  <a href={`tel:${phoneRaw}`} className="text-base font-bold text-white hover:text-amber-300 transition-colors">
                     {phone}
                   </a>
                 </div>
@@ -69,22 +83,45 @@ Notes: ${formData.notes || "Interested in Mee Illu, Mee Istam consultation"}`;
                   💬
                 </div>
                 <div>
-                  <span className="block text-xs text-amber-200/70 font-medium">WhatsApp Communication</span>
+                  <span className="block text-xs text-amber-200/70 font-medium">WhatsApp Direct</span>
                   <a
-                    href={`https://wa.me/${whatsapp}?text=Hi%20Keesara%20Builders,%20I%20am%20interested%20in%20Mee%20Illu,%20Mee%20Istam`}
+                    href={`https://wa.me/${whatsapp}?text=Hi%20Keesara%20City,%20I%20am%20interested%20in%20KVR%20Landmark-2%20plots%20and%20Mee%20Illu%20Mee%20Istam%20construction.`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-base font-bold text-[#25D366] hover:underline"
                   >
-                    +91 91 77000 848 (Click to Chat)
+                    {phone} (Click to Chat)
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3.5">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-500/20 text-teal-300 text-lg border border-teal-500/30">
+                  ✉️
+                </div>
+                <div>
+                  <span className="block text-xs text-amber-200/70 font-medium">Email Support</span>
+                  <a href={`mailto:${email}`} className="text-xs font-semibold text-white hover:text-amber-300 transition-colors">
+                    {email}
                   </a>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="mt-8 text-xs text-amber-200/50">
-            Keesara Builders & Developers • Hyderabad & Keesara Growth Corridor
+          <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between">
+            <span className="text-[11px] text-amber-200/60">
+              KVR Landmark-2 • ORR Exit 8, Keesara
+            </span>
+            <a
+              href={brochurePdf}
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-bold text-amber-400 hover:text-amber-300 underline"
+            >
+              Download Brochure (PDF) ↓
+            </a>
           </div>
         </div>
 
@@ -146,43 +183,76 @@ Notes: ${formData.notes || "Interested in Mee Illu, Mee Istam consultation"}`;
 
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-ink-soft mb-1.5">
-                  Plot Status
+                  Your Requirement / Interest
                 </label>
-                <div className="grid gap-3 sm:grid-cols-2">
+                <div className="grid gap-2.5 sm:grid-cols-3">
                   <label
-                    className={`flex cursor-pointer items-center gap-2.5 rounded-xl border p-3 text-xs font-semibold transition-all ${
-                      formData.plotStatus === "own-plot"
-                        ? "border-amber-500 bg-amber-500/10 text-amber-900"
-                        : "border-line bg-background text-ink-soft"
+                    className={`flex cursor-pointer flex-col justify-center rounded-xl border p-3 text-xs font-semibold transition-all ${
+                      formData.plotStatus === "visit-layout"
+                        ? "border-amber-500 bg-amber-500/10 text-amber-950 ring-1 ring-amber-500"
+                        : "border-line bg-background text-ink-soft hover:border-ink-soft"
                     }`}
                   >
-                    <input
-                      type="radio"
-                      name="plotStatus"
-                      value="own-plot"
-                      checked={formData.plotStatus === "own-plot"}
-                      onChange={(e) => setFormData({ ...formData, plotStatus: e.target.value })}
-                      className="accent-amber-600"
-                    />
-                    <span>I already have my own plot</span>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="radio"
+                        name="plotStatus"
+                        value="visit-layout"
+                        checked={formData.plotStatus === "visit-layout"}
+                        onChange={(e) => setFormData({ ...formData, plotStatus: e.target.value })}
+                        className="accent-amber-600"
+                      />
+                      <span className="font-bold">Book Site Visit</span>
+                    </div>
+                    <span className="mt-1 text-[11px] font-normal text-ink-soft">
+                      Explore 320+ plots @ Exit 8
+                    </span>
                   </label>
 
                   <label
-                    className={`flex cursor-pointer items-center gap-2.5 rounded-xl border p-3 text-xs font-semibold transition-all ${
+                    className={`flex cursor-pointer flex-col justify-center rounded-xl border p-3 text-xs font-semibold transition-all ${
                       formData.plotStatus === "hmda-plot"
-                        ? "border-amber-500 bg-amber-500/10 text-amber-900"
-                        : "border-line bg-background text-ink-soft"
+                        ? "border-amber-500 bg-amber-500/10 text-amber-950 ring-1 ring-amber-500"
+                        : "border-line bg-background text-ink-soft hover:border-ink-soft"
                     }`}
                   >
-                    <input
-                      type="radio"
-                      name="plotStatus"
-                      value="hmda-plot"
-                      checked={formData.plotStatus === "hmda-plot"}
-                      onChange={(e) => setFormData({ ...formData, plotStatus: e.target.value })}
-                      className="accent-amber-600"
-                    />
-                    <span>I need HMDA plot + construction</span>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="radio"
+                        name="plotStatus"
+                        value="hmda-plot"
+                        checked={formData.plotStatus === "hmda-plot"}
+                        onChange={(e) => setFormData({ ...formData, plotStatus: e.target.value })}
+                        className="accent-amber-600"
+                      />
+                      <span className="font-bold">Plot + Build</span>
+                    </div>
+                    <span className="mt-1 text-[11px] font-normal text-ink-soft">
+                      HMDA plot & custom villa
+                    </span>
+                  </label>
+
+                  <label
+                    className={`flex cursor-pointer flex-col justify-center rounded-xl border p-3 text-xs font-semibold transition-all ${
+                      formData.plotStatus === "own-plot"
+                        ? "border-amber-500 bg-amber-500/10 text-amber-950 ring-1 ring-amber-500"
+                        : "border-line bg-background text-ink-soft hover:border-ink-soft"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="radio"
+                        name="plotStatus"
+                        value="own-plot"
+                        checked={formData.plotStatus === "own-plot"}
+                        onChange={(e) => setFormData({ ...formData, plotStatus: e.target.value })}
+                        className="accent-amber-600"
+                      />
+                      <span className="font-bold">Have Own Plot</span>
+                    </div>
+                    <span className="mt-1 text-[11px] font-normal text-ink-soft">
+                      Turnkey construction only
+                    </span>
                   </label>
                 </div>
               </div>

@@ -38,7 +38,7 @@ const FALLBACK_BUSINESSES: Business[] = [
     category_id: "cat-1",
     description: "Custom architecture & top-quality house construction. HMDA-approved plots in Hyderabad or build on your own plot with full design freedom.",
     address: "Keesara Main Road, near ORR Exit 8, Keesara 501301",
-    phone: "+91 91 77000 848",
+    phone: "+91 90100 28800",
     location_url: "https://maps.google.com/?q=Keesara+ORR+Exit+8",
     website: "/mee-illu-mee-istam",
     lat: 17.531,
