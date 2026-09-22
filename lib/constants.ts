@@ -208,17 +208,19 @@ export const ALL_VILLA_DESIGNS = [
 
 
 export const SITE = {
-  name: process.env.NEXT_PUBLIC_SITE_NAME || "keesara.city",
+  name: process.env.NEXT_PUBLIC_SITE_NAME || "Keesara.city",
   domain: "keesara.city",
   url:
     process.env.NEXT_PUBLIC_SITE_URL &&
     !process.env.NEXT_PUBLIC_SITE_URL.includes("localhost")
       ? process.env.NEXT_PUBLIC_SITE_URL
       : "https://keesara.city",
-  tagline: "Keesara, Telangana — local & unfiltered",
+  tagline: "KVR Landmark-2 @ Keesara",
   description:
-    "The local journal and business directory built for Keesara.",
+    "Buy your plot and get it constructed as you like. Just 300m from ORR Exit 8. 320+ Open Plots. HMDA Approved 25.5 Acres.",
+  ogImage: "https://keesara.city/images/mee-illu-mee-istam/hero-tagged.jpg",
   author: "Keesara City Team",
   brand: "Keesara City",
   github: "",
 } as const;
+

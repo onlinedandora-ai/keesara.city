@@ -49,20 +49,20 @@ export function BrochureHeader() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#111622]/95 backdrop-blur-md px-2.5 sm:px-6 py-2.5 text-white shadow-xl">
-      <div className="mx-auto flex max-w-5xl items-center justify-between gap-2 sm:gap-4">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#111622]/95 backdrop-blur-md px-2 sm:px-6 py-2 text-white shadow-xl">
+      <div className="mx-auto flex max-w-5xl items-center justify-between gap-1.5 sm:gap-4">
         
-        {/* Responsive Back Button */}
-        <div className="flex shrink-0 items-center gap-2">
+        {/* Responsive Back Button (Flexbox) */}
+        <div className="flex shrink-0 items-center gap-1.5">
           <Link
             href="/"
             onClick={handleBack}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-white/10 hover:bg-white/20 active:bg-white/30 px-2 sm:px-3 py-1 text-xs sm:text-sm font-bold text-amber-300 hover:text-amber-200 transition-all cursor-pointer shadow-2xs"
+            className="inline-flex items-center gap-1 rounded-lg bg-white/10 hover:bg-white/20 active:bg-white/30 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-amber-300 hover:text-amber-200 transition-all cursor-pointer shadow-2xs"
             aria-label="Back to Keesara City"
           >
-            <span className="text-base leading-none">←</span>
+            <span className="text-sm sm:text-base leading-none">←</span>
             <span className="hidden sm:inline">Back</span>
-            <span className="sm:hidden font-semibold">Back</span>
+            <span className="sm:hidden font-semibold text-[11px]">Back</span>
           </Link>
           <span className="text-white/20 hidden md:inline">|</span>
           <span className="hidden md:inline-block text-[11px] font-semibold text-slate-300 uppercase tracking-widest font-serif">
@@ -70,8 +70,8 @@ export function BrochureHeader() {
           </span>
         </div>
 
-        {/* Quick Page Jump Pills (Smooth scroll without history pollution) */}
-        <nav className="flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar py-0.5" aria-label="Brochure Pages">
+        {/* Quick Page Jump Pills (Flexbox with horizontal scroll) */}
+        <nav className="flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar py-0.5 px-0.5" aria-label="Brochure Pages">
           {[
             { id: "page-1", num: "01", label: "01 Cover" },
             { id: "page-2", num: "02", label: "02 Location" },
@@ -85,7 +85,7 @@ export function BrochureHeader() {
                 key={item.id}
                 type="button"
                 onClick={(e) => scrollToSection(item.id, e)}
-                className={`shrink-0 rounded-lg px-2 sm:px-2.5 py-1 text-[10px] sm:text-[11px] font-bold transition-all shadow-2xs cursor-pointer ${
+                className={`shrink-0 flex items-center justify-center rounded-lg px-2 sm:px-2.5 py-1 sm:py-1 text-[10px] sm:text-[11px] font-bold transition-all shadow-2xs cursor-pointer ${
                   isActive
                     ? "bg-[#D96B43] text-white shadow-sm"
                     : "bg-white/10 text-slate-200 hover:bg-white/20 hover:text-white"
@@ -98,11 +98,11 @@ export function BrochureHeader() {
           })}
         </nav>
 
-        {/* Enhanced Call Action in Single Line */}
+        {/* Enhanced Call Action in Single Line (Flexbox) */}
         <div className="flex shrink-0 items-center">
           <a
             href={`tel:${HOUSE_AD.phoneRaw}`}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-[#D96B43] to-[#C85A32] px-2.5 sm:px-3.5 py-1.5 text-[11px] sm:text-xs font-bold text-white shadow-md hover:from-[#c25932] hover:to-[#b04a25] transition-all hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-flex items-center gap-1 sm:gap-1.5 rounded-lg bg-gradient-to-r from-[#D96B43] to-[#C85A32] px-2 sm:px-3.5 py-1.5 text-[10px] sm:text-xs font-bold text-white shadow-md hover:from-[#c25932] hover:to-[#b04a25] transition-all hover:scale-[1.02] active:scale-[0.98]"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-300 opacity-75"></span>
@@ -110,7 +110,7 @@ export function BrochureHeader() {
             </span>
             <span>📞</span>
             <span className="hidden sm:inline">{HOUSE_AD.phone}</span>
-            <span className="sm:hidden">90100 28800</span>
+            <span className="sm:hidden">Call</span>
           </a>
         </div>
 

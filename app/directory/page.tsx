@@ -1,8 +1,14 @@
 import { Suspense } from "react";
+import type { Metadata } from "next";
 import { getBusinesses, getCategories } from "@/lib/data";
 import { BusinessCard } from "@/components/directory/BusinessCard";
 import { CategoryChips } from "@/components/directory/CategoryChips";
 import { DirectoryAddButton } from "@/components/directory/DirectoryAddButton";
+
+export const metadata: Metadata = {
+  title: "Local Business Directory — Keesara",
+  description: "Explore real estate, healthcare, education, retail, and services across Keesara, Telangana.",
+};
 
 export const revalidate = 3600;
 

@@ -17,30 +17,42 @@ import { TopBannerAd } from "@/components/home/TopBannerAd";
 import { SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `${SITE.name} — ${SITE.tagline}`,
-  description: SITE.description,
+  title: "Keesara.city — KVR Landmark-2 @ Keesara (HMDA Approved · 25.5 Acres)",
+  description:
+    "Buy your plot and get it constructed as you like. Just 300m from ORR Exit 8. 320+ Open Plots. HMDA Approved 25.5 Acres Layout & Local Keesara Journal.",
   openGraph: {
-    title: `${SITE.name} — ${SITE.tagline}`,
-    description: SITE.description,
+    title: "Keesara.city — KVR Landmark-2 @ Keesara",
+    description:
+      "Buy your plot and get it constructed as you like. Just 300m from ORR Exit 8. 320+ Open Plots. HMDA Approved 25.5 Acres.",
     url: SITE.url,
-    siteName: SITE.name,
+    siteName: "Keesara.city",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "/images/mee-illu-mee-istam/hero-tagged.jpg",
+        url: `${SITE.url}/images/mee-illu-mee-istam/hero-tagged.jpg`,
+        secureUrl: `${SITE.url}/images/mee-illu-mee-istam/hero-tagged.jpg`,
         width: 1024,
         height: 576,
         type: "image/jpeg",
-        alt: "Keesara.city — మీ ఇల్లు మీ ఇష్టం",
+        alt: "Keesara.city — మీ ఇల్లు మీ ఇష్టం | KVR Landmark-2",
+      },
+      {
+        url: `${SITE.url}/og-image.jpg`,
+        secureUrl: `${SITE.url}/og-image.jpg`,
+        width: 1024,
+        height: 576,
+        type: "image/jpeg",
+        alt: "Keesara.city",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE.name} — ${SITE.tagline}`,
-    description: SITE.description,
-    images: ["/images/mee-illu-mee-istam/hero-tagged.jpg"],
+    title: "Keesara.city — KVR Landmark-2 @ Keesara",
+    description:
+      "Buy your plot and get it constructed as you like. Just 300m from ORR Exit 8. 320+ Open Plots.",
+    images: [`${SITE.url}/images/mee-illu-mee-istam/hero-tagged.jpg`],
   },
 };
 

@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getJournalPosts } from "@/lib/data";
 import { SITE } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: "Local Journal & Guides — Keesara",
+  description: "Editorial reporting, locality spotlights, and development guides from Keesara, Telangana.",
+};
 
 export const revalidate = 3600;
 

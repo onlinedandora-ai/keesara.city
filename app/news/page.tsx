@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import { getNewsPosts } from "@/lib/data";
 import { NewsCard } from "@/components/news/NewsCard";
 import { PostNewsTrigger } from "@/components/news/PostNewsTrigger";
+
+export const metadata: Metadata = {
+  title: "Community News & Updates — Keesara",
+  description: "Verified local updates and community news from residents across Keesara, Telangana.",
+};
 
 export const revalidate = 60;
 

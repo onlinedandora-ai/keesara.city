@@ -25,7 +25,8 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/mee-illu-mee-istam/hero-tagged.jpg",
+        url: "https://keesara.city/images/mee-illu-mee-istam/hero-tagged.jpg",
+        secureUrl: "https://keesara.city/images/mee-illu-mee-istam/hero-tagged.jpg",
         width: 1024,
         height: 576,
         type: "image/jpeg",
@@ -38,40 +39,40 @@ export const metadata: Metadata = {
     title: "Keesara.city — KVR Landmark-2 @ Keesara",
     description:
       "Buy your plot and get it constructed as you like. Just 300m from ORR Exit 8. 320+ Open Plots.",
-    images: ["/images/mee-illu-mee-istam/hero-tagged.jpg"],
+    images: ["https://keesara.city/images/mee-illu-mee-istam/hero-tagged.jpg"],
   },
 };
 
 export default function MeeIlluMeeIstamPage() {
   return (
-    <div className="min-h-screen bg-[#1e232d] text-slate-800 antialiased selection:bg-[#D96B43] selection:text-white pb-24">
+    <div className="min-h-screen bg-[#1e232d] text-slate-800 antialiased selection:bg-[#D96B43] selection:text-white pb-20 sm:pb-24">
       
       {/* Sticky Top Control Bar with clean Back Navigation & Smooth Page Jumps */}
       <BrochureHeader />
 
       {/* Main Multi-Page Brochure Container */}
-      <main className="mx-auto max-w-4xl px-3 sm:px-6 pt-6 sm:pt-10 space-y-12 sm:space-y-16">
+      <main className="mx-auto max-w-4xl px-2.5 sm:px-6 pt-4 sm:pt-10 space-y-8 sm:space-y-16">
 
         {/* ========================================================
             PAGE 01 / 05 — COVER & HERO
            ======================================================== */}
         <section
           id="page-1"
-          className="relative overflow-hidden rounded-3xl border border-white/15 bg-[#0D121F] text-white shadow-2xl flex flex-col justify-between"
+          className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/15 bg-[#0D121F] text-white shadow-2xl flex flex-col justify-between"
         >
-          {/* Top Bar on Page 1 */}
-          <div className="flex items-center justify-between px-6 sm:px-10 pt-6 sm:pt-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider text-slate-200 backdrop-blur-md">
+          {/* Top Bar on Page 1 (Flexbox) */}
+          <div className="flex items-center justify-between flex-wrap gap-2 px-4 sm:px-10 pt-4 sm:pt-8">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-white/20 bg-black/40 px-3 sm:px-3.5 py-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-200 backdrop-blur-md">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
               <span>HMDA APPROVED · 25.5 ACRES</span>
             </div>
-            <span className="text-sm sm:text-base font-serif font-black tracking-[0.25em] text-[#D4AF37] uppercase">
+            <span className="text-xs sm:text-base font-serif font-black tracking-[0.2em] sm:tracking-[0.25em] text-[#D4AF37] uppercase">
               KEESARA.CITY
             </span>
           </div>
 
           {/* Hero Image Showcase */}
-          <div className="relative mt-6 sm:mt-8 aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden border-y border-white/10 bg-slate-900">
+          <div className="relative mt-4 sm:mt-8 aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden border-y border-white/10 bg-slate-900">
             <Image
               src="/images/mee-illu-mee-istam/hero-tagged.jpg"
               alt="Buy your plot and get it constructed as you like — Keesara.city"
@@ -82,29 +83,29 @@ export default function MeeIlluMeeIstamPage() {
             />
           </div>
 
-          {/* Page 1 Body Content */}
-          <div className="px-6 sm:px-10 py-8 sm:py-10 space-y-6">
-            <div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-sans leading-tight">
+          {/* Page 1 Body Content (Flexbox) */}
+          <div className="px-4 sm:px-10 py-6 sm:py-10 space-y-4 sm:space-y-6 flex flex-col">
+            <div className="space-y-3">
+              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-sans leading-tight">
                 Buy your plot and get it{" "}
                 <span className="text-[#E07A5F]">constructed</span>
                 <br />
                 as you like.
               </h1>
 
-              <div className="mt-4 flex flex-wrap items-center gap-4 sm:gap-6 text-sm sm:text-base text-slate-300 font-medium">
+              <div className="flex flex-wrap items-center gap-2.5 sm:gap-6 text-xs sm:text-base text-slate-300 font-medium">
                 <span className="inline-flex items-center gap-1.5 text-[#E07A5F]">
                   <span>📍</span>
                   <strong className="font-bold text-white">Just 300m from ORR Exit 8</strong>
                 </span>
-                <span className="text-white/30">•</span>
+                <span className="text-white/30 hidden sm:inline">•</span>
                 <span className="font-semibold text-slate-200">320+ Open Plots</span>
               </div>
             </div>
 
             {/* Telugu Logo Display */}
-            <div className="flex justify-center py-4">
-              <div className="relative w-56 sm:w-64 h-24 sm:h-28 drop-shadow-2xl">
+            <div className="flex items-center justify-center py-2 sm:py-4">
+              <div className="relative w-48 sm:w-64 h-20 sm:h-28 drop-shadow-2xl">
                 <Image
                   src={HOUSE_AD.logoImage}
                   alt="మీ ఇల్లు మీ ఇష్టం Logo"
@@ -116,13 +117,13 @@ export default function MeeIlluMeeIstamPage() {
             </div>
           </div>
 
-          {/* Page 1 Terracotta Footer Bar */}
-          <div className="bg-[#C85A32] text-white px-6 sm:px-10 py-3.5 flex items-center justify-between font-bold text-xs sm:text-sm">
+          {/* Page 1 Terracotta Footer Bar (Flexbox) */}
+          <div className="bg-[#C85A32] text-white px-4 sm:px-10 py-3 sm:py-3.5 flex items-center justify-between flex-wrap gap-2 font-bold text-xs sm:text-sm">
             <a href={`tel:${HOUSE_AD.phoneRaw}`} className="hover:underline flex items-center gap-2">
               <span>📞</span>
               <span>{HOUSE_AD.phone}</span>
             </a>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               <span className="font-normal text-white/80">keesara.city</span>
               <span className="rounded bg-black/20 px-2 py-0.5 text-[11px] font-mono font-bold tracking-wider">
                 01 / 05
@@ -136,10 +137,10 @@ export default function MeeIlluMeeIstamPage() {
            ======================================================== */}
         <section
           id="page-2"
-          className="relative overflow-hidden rounded-3xl border border-line bg-[#fbfbf9] text-slate-900 shadow-2xl flex flex-col justify-between"
+          className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-line bg-[#fbfbf9] text-slate-900 shadow-2xl flex flex-col justify-between"
         >
-          {/* Top Bar on Page 2 */}
-          <div className="flex items-center justify-between px-6 sm:px-10 pt-6 sm:pt-8">
+          {/* Top Bar on Page 2 (Flexbox) */}
+          <div className="flex items-center justify-between px-4 sm:px-10 pt-4 sm:pt-8">
             <span className="text-xs sm:text-sm font-serif font-black tracking-[0.2em] text-slate-700 uppercase">
               KEESARA.CITY
             </span>
@@ -148,16 +149,14 @@ export default function MeeIlluMeeIstamPage() {
             </span>
           </div>
 
-          {/* Page 2 Title & HMDA Tag */}
-          <div className="px-6 sm:px-10 pt-6 space-y-4">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-              Everything Close. Everything
-              <br />
-              Connected.
+          {/* Page 2 Title & HMDA Tag (Flexbox) */}
+          <div className="px-4 sm:px-10 pt-4 sm:pt-6 space-y-3 sm:space-y-4 flex flex-col">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+              Everything Close. Everything Connected.
             </h2>
 
-            <div className="inline-flex items-center gap-3.5 rounded-2xl border border-slate-200 bg-white p-3 shadow-xs">
-              <div className="relative w-12 h-8 overflow-hidden rounded">
+            <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-2.5 sm:p-3 shadow-xs w-full sm:w-fit">
+              <div className="relative w-10 h-7 sm:w-12 sm:h-8 shrink-0 overflow-hidden rounded">
                 <Image
                   src={HOUSE_AD.hmdaLogo}
                   alt="HMDA Certification"
@@ -165,11 +164,11 @@ export default function MeeIlluMeeIstamPage() {
                   className="object-contain"
                 />
               </div>
-              <div>
-                <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wide">
+              <div className="min-w-0">
+                <h4 className="text-[11px] sm:text-xs font-bold text-slate-900 uppercase tracking-wide">
                   HUDA / HMDA Approved Layout
                 </h4>
-                <p className="text-[11px] text-slate-500 font-medium">
+                <p className="text-[10px] sm:text-[11px] text-slate-500 font-medium">
                   Fully sanctioned, gated community
                 </p>
               </div>
@@ -177,8 +176,8 @@ export default function MeeIlluMeeIstamPage() {
           </div>
 
           {/* Aerial Map View */}
-          <div className="px-6 sm:px-10 py-6">
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-slate-300 shadow-md bg-slate-900">
+          <div className="px-4 sm:px-10 py-4 sm:py-6">
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl sm:rounded-2xl border border-slate-300 shadow-md bg-slate-900">
               <Image
                 src={HOUSE_AD.aerialMapImage}
                 alt="ORR Exit 8 to KVR Landmark-2 Aerial Route Map (300 Meters)"
@@ -189,18 +188,18 @@ export default function MeeIlluMeeIstamPage() {
             </div>
           </div>
 
-          {/* 6 Distances Grid (Matching PDF Page 2) */}
-          <div className="px-6 sm:px-10 pb-8">
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {/* 6 Distances Grid (Flexbox Card Items) */}
+          <div className="px-4 sm:px-10 pb-6 sm:pb-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
               {CONNECTIVITY_HIGHLIGHTS.map((item) => (
                 <div
                   key={item.name}
-                  className="rounded-xl border border-slate-200 bg-white p-4 shadow-xs"
+                  className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-3 sm:p-4 shadow-xs"
                 >
-                  <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  <span className="block text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400">
                     {item.name}
                   </span>
-                  <span className="mt-1 block text-2xl font-black text-slate-900">
+                  <span className="mt-1 block text-xl sm:text-2xl font-black text-slate-900">
                     {item.distance}
                   </span>
                 </div>
@@ -208,8 +207,8 @@ export default function MeeIlluMeeIstamPage() {
             </div>
           </div>
 
-          {/* Page 2 Terracotta Footer Bar */}
-          <div className="bg-[#C85A32] text-white px-6 sm:px-10 py-3.5 flex items-center justify-between font-bold text-xs sm:text-sm">
+          {/* Page 2 Terracotta Footer Bar (Flexbox) */}
+          <div className="bg-[#C85A32] text-white px-4 sm:px-10 py-3 sm:py-3.5 flex items-center justify-between flex-wrap gap-2 font-bold text-xs sm:text-sm">
             <a href={`tel:${HOUSE_AD.phoneRaw}`} className="hover:underline flex items-center gap-2">
               <span>📞</span>
               <span>{HOUSE_AD.phone}</span>
@@ -225,10 +224,10 @@ export default function MeeIlluMeeIstamPage() {
            ======================================================== */}
         <section
           id="page-3"
-          className="relative overflow-hidden rounded-3xl border border-line bg-[#fbfbf9] text-slate-900 shadow-2xl flex flex-col justify-between"
+          className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-line bg-[#fbfbf9] text-slate-900 shadow-2xl flex flex-col justify-between"
         >
-          {/* Top Bar on Page 3 */}
-          <div className="flex items-center justify-between px-6 sm:px-10 pt-6 sm:pt-8">
+          {/* Top Bar on Page 3 (Flexbox) */}
+          <div className="flex items-center justify-between px-4 sm:px-10 pt-4 sm:pt-8">
             <span className="text-xs sm:text-sm font-serif font-black tracking-[0.2em] text-slate-700 uppercase">
               KEESARA.CITY
             </span>
@@ -237,9 +236,9 @@ export default function MeeIlluMeeIstamPage() {
             </span>
           </div>
 
-          {/* Title & Description */}
-          <div className="px-6 sm:px-10 pt-6 space-y-3">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          {/* Title & Description (Flexbox) */}
+          <div className="px-4 sm:px-10 pt-4 sm:pt-6 space-y-2.5 sm:space-y-3 flex flex-col">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
               The Exit 8 Advantage
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl font-normal">
@@ -248,66 +247,66 @@ export default function MeeIlluMeeIstamPage() {
             </p>
           </div>
 
-          {/* 3 Dark Metric Boxes (Matching PDF Page 3) */}
-          <div className="px-6 sm:px-10 pt-6">
-            <div className="grid grid-cols-3 gap-3">
-              <div className="rounded-xl bg-[#1a1e29] p-4 text-center text-white">
-                <span className="block text-2xl sm:text-3xl font-black text-white">300m</span>
-                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-400">
-                  FROM ORR EXIT 8
+          {/* 3 Dark Metric Boxes (Flexbox Alignment) */}
+          <div className="px-4 sm:px-10 pt-4 sm:pt-6">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
+              <div className="flex flex-col items-center justify-center rounded-xl bg-[#1a1e29] p-2.5 sm:p-4 text-center text-white">
+                <span className="block text-lg sm:text-3xl font-black text-white">300m</span>
+                <span className="text-[9px] sm:text-xs font-bold uppercase tracking-wider text-slate-400 leading-tight mt-0.5">
+                  FROM EXIT 8
                 </span>
               </div>
-              <div className="rounded-xl bg-[#1a1e29] p-4 text-center text-white">
-                <span className="block text-2xl sm:text-3xl font-black text-[#E07A5F]">320+</span>
-                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-400">
+              <div className="flex flex-col items-center justify-center rounded-xl bg-[#1a1e29] p-2.5 sm:p-4 text-center text-white">
+                <span className="block text-lg sm:text-3xl font-black text-[#E07A5F]">320+</span>
+                <span className="text-[9px] sm:text-xs font-bold uppercase tracking-wider text-slate-400 leading-tight mt-0.5">
                   OPEN PLOTS
                 </span>
               </div>
-              <div className="rounded-xl bg-[#1a1e29] p-4 text-center text-white">
-                <span className="block text-2xl sm:text-3xl font-black text-white">25.5</span>
-                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-400">
-                  ACRE COMMUNITY
+              <div className="flex flex-col items-center justify-center rounded-xl bg-[#1a1e29] p-2.5 sm:p-4 text-center text-white">
+                <span className="block text-lg sm:text-3xl font-black text-white">25.5</span>
+                <span className="text-[9px] sm:text-xs font-bold uppercase tracking-wider text-slate-400 leading-tight mt-0.5">
+                  ACRES
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Built for Everyday Ease Feature Box */}
-          <div className="px-6 sm:px-10 pt-4">
-            <div className="rounded-xl border border-slate-200 bg-white p-4 flex items-start gap-3 shadow-xs">
-              <div className="rounded-lg bg-slate-100 p-2 text-base">🏛️</div>
-              <div>
+          {/* Built for Everyday Ease Feature Box (Flexbox) */}
+          <div className="px-4 sm:px-10 pt-3.5 sm:pt-4">
+            <div className="rounded-xl border border-slate-200 bg-white p-3 sm:p-4 flex items-start gap-3 shadow-xs">
+              <div className="rounded-lg bg-slate-100 p-2 text-base shrink-0">🏛️</div>
+              <div className="min-w-0">
                 <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wide">
                   Built for Everyday Ease
                 </h4>
-                <p className="text-xs text-slate-600 font-normal">
+                <p className="text-xs text-slate-600 font-normal mt-0.5">
                   Wide internal roads (30&apos;–120&apos;), dedicated parks, and planned utilities.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Price Table (Matching PDF Page 3) */}
-          <div className="px-6 sm:px-10 pt-6">
+          {/* Price Table (Flexbox Rows) */}
+          <div className="px-4 sm:px-10 pt-4 sm:pt-6">
             <div className="overflow-hidden rounded-xl border border-slate-300 bg-white shadow-xs">
-              <div className="bg-[#1a1e29] text-white px-5 py-2.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider">
+              <div className="bg-[#1a1e29] text-white px-3.5 sm:px-5 py-2.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider">
                 <span>ORR CORRIDOR</span>
                 <span>PRICE / SQ.YD</span>
               </div>
-              <div className="divide-y divide-slate-200 text-xs sm:text-sm">
-                <div className="flex items-center justify-between p-3.5 hover:bg-slate-50">
+              <div className="divide-y divide-slate-200 text-xs sm:text-sm flex flex-col">
+                <div className="flex items-center justify-between p-3 sm:p-3.5 hover:bg-slate-50 gap-2">
                   <span className="font-semibold text-slate-800">Exit 6 — Medchal</span>
                   <span className="font-bold text-slate-700">₹50,000 – ₹1,00,000</span>
                 </div>
-                <div className="flex items-center justify-between p-3.5 hover:bg-slate-50">
+                <div className="flex items-center justify-between p-3 sm:p-3.5 hover:bg-slate-50 gap-2">
                   <span className="font-semibold text-slate-800">Exit 7 — Shamirpet</span>
                   <span className="font-bold text-slate-700">₹50,000 – ₹1,00,000</span>
                 </div>
-                <div className="flex items-center justify-between p-3.5 hover:bg-slate-50">
+                <div className="flex items-center justify-between p-3 sm:p-3.5 hover:bg-slate-50 gap-2">
                   <span className="font-semibold text-slate-800">Exit 9 — Ghatkesar</span>
                   <span className="font-bold text-slate-700">₹50,000 – ₹70,000</span>
                 </div>
-                <div className="flex items-center justify-between p-3.5 bg-orange-50/80 border-l-4 border-l-[#C85A32]">
+                <div className="flex items-center justify-between p-3 sm:p-3.5 bg-orange-50/80 border-l-4 border-l-[#C85A32] gap-2">
                   <span className="font-bold text-[#C85A32]">Exit 8 — Keesara City</span>
                   <span className="font-black text-[#C85A32] text-sm sm:text-base">₹30,000 – ₹35,000</span>
                 </div>
@@ -316,13 +315,13 @@ export default function MeeIlluMeeIstamPage() {
           </div>
 
           {/* Master Layout Plan & Villa Architecture Showcase */}
-          <div className="px-6 sm:px-10 py-6 space-y-6">
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight">
+          <div className="px-4 sm:px-10 py-4 sm:py-6 space-y-4 sm:space-y-6 flex flex-col">
+            <div className="space-y-1.5 sm:space-y-2">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                <h3 className="text-base sm:text-xl font-extrabold text-slate-900 tracking-tight">
                   320+ Open Plots Master Layout Plan
                 </h3>
-                <span className="rounded bg-emerald-100 text-emerald-800 font-bold text-[10px] px-2 py-0.5 uppercase tracking-wide">
+                <span className="w-fit rounded bg-emerald-100 text-emerald-800 font-bold text-[10px] px-2 py-0.5 uppercase tracking-wide">
                   HMDA Sanctioned
                 </span>
               </div>
@@ -331,7 +330,7 @@ export default function MeeIlluMeeIstamPage() {
               </p>
             </div>
 
-            <div className="relative aspect-[1024/700] w-full overflow-hidden rounded-2xl border border-slate-300 shadow-md bg-[#88b66e] dark:bg-slate-900">
+            <div className="relative aspect-[1024/700] w-full overflow-hidden rounded-xl sm:rounded-2xl border border-slate-300 shadow-md bg-[#88b66e] dark:bg-slate-900">
               <Image
                 src={HOUSE_AD.masterLayoutImage}
                 alt="320+ Luxury Gated Community Open Plots Master Layout Map"
@@ -341,7 +340,7 @@ export default function MeeIlluMeeIstamPage() {
               />
             </div>
 
-            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-slate-300 shadow-md bg-slate-900">
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl sm:rounded-2xl border border-slate-300 shadow-md bg-slate-900">
               <Image
                 src="/images/mee-illu-mee-istam/villa-contemporary.jpg"
                 alt="Keesara City Modern Villa Architecture"
@@ -351,13 +350,13 @@ export default function MeeIlluMeeIstamPage() {
               />
             </div>
 
-            <p className="text-center text-sm font-bold text-[#C85A32]">
+            <p className="text-center text-xs sm:text-sm font-bold text-[#C85A32]">
               Limited inventory remaining in this phase.
             </p>
           </div>
 
-          {/* Page 3 Terracotta Footer Bar */}
-          <div className="bg-[#C85A32] text-white px-6 sm:px-10 py-3.5 flex items-center justify-between font-bold text-xs sm:text-sm">
+          {/* Page 3 Terracotta Footer Bar (Flexbox) */}
+          <div className="bg-[#C85A32] text-white px-4 sm:px-10 py-3 sm:py-3.5 flex items-center justify-between flex-wrap gap-2 font-bold text-xs sm:text-sm">
             <a href={`tel:${HOUSE_AD.phoneRaw}`} className="hover:underline flex items-center gap-2">
               <span>📞</span>
               <span>{HOUSE_AD.phone}</span>
@@ -373,10 +372,10 @@ export default function MeeIlluMeeIstamPage() {
            ======================================================== */}
         <section
           id="page-4"
-          className="relative overflow-hidden rounded-3xl border border-line bg-[#fbfbf9] text-slate-900 shadow-2xl flex flex-col justify-between"
+          className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-line bg-[#fbfbf9] text-slate-900 shadow-2xl flex flex-col justify-between"
         >
-          {/* Top Bar on Page 4 */}
-          <div className="flex items-center justify-between px-6 sm:px-10 pt-6 sm:pt-8">
+          {/* Top Bar on Page 4 (Flexbox) */}
+          <div className="flex items-center justify-between px-4 sm:px-10 pt-4 sm:pt-8">
             <span className="text-xs sm:text-sm font-serif font-black tracking-[0.2em] text-slate-700 uppercase">
               KEESARA.CITY
             </span>
@@ -385,10 +384,10 @@ export default function MeeIlluMeeIstamPage() {
             </span>
           </div>
 
-          {/* Telugu Logo & Header */}
-          <div className="px-6 sm:px-10 pt-4 text-center space-y-4">
+          {/* Telugu Logo & Header (Flexbox) */}
+          <div className="px-4 sm:px-10 pt-4 text-center space-y-3 sm:space-y-4 flex flex-col items-center">
             <div className="flex justify-center">
-              <div className="relative w-44 sm:w-52 h-20 sm:h-24">
+              <div className="relative w-40 sm:w-52 h-16 sm:h-24">
                 <Image
                   src={HOUSE_AD.logoImage}
                   alt="మీ ఇల్లు మీ ఇష్టం"
@@ -398,31 +397,29 @@ export default function MeeIlluMeeIstamPage() {
               </div>
             </div>
 
-            <div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-                Own a Slice of
-                <br />
-                Freedom
+            <div className="space-y-1.5">
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                Own a Slice of Freedom
               </h2>
-              <p className="mt-3 text-xs sm:text-sm text-slate-600 max-w-lg mx-auto leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto leading-relaxed">
                 As the builders and developers behind Keesara.city, our vision is simple — a thriving community of happy homeowners.
               </p>
             </div>
 
-            <div className="inline-block rounded-md border border-slate-200 bg-white px-4 py-1.5 text-xs font-bold text-slate-700">
+            <div className="inline-block rounded-md border border-slate-200 bg-white px-3 sm:px-4 py-1.5 text-xs font-bold text-slate-700">
               POWERED BY <strong className="text-slate-900">Mee Illu – Mee Ishtam · Space Cult</strong>
             </div>
 
-            <p className="text-base sm:text-lg font-bold italic text-[#C85A32] font-serif">
+            <p className="text-sm sm:text-lg font-bold italic text-[#C85A32] font-serif">
               &quot;Design and build it the way you want to — set your imagination free.&quot;
             </p>
           </div>
 
-          {/* 3 House Designs Side by Side (Matching PDF Page 4) */}
-          <div className="px-6 sm:px-10 py-6">
-            <div className="grid gap-4 sm:grid-cols-3">
+          {/* 3 House Designs (Responsive Flex/Grid Cards) */}
+          <div className="px-4 sm:px-10 py-4 sm:py-6 flex flex-col">
+            <div className="grid gap-3.5 sm:gap-4 sm:grid-cols-3">
               {DESIGN_STYLES.map((style) => (
-                <div key={style.id} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xs">
+                <div key={style.id} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xs flex flex-col justify-between">
                   <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-900">
                     <Image
                       src={style.image}
@@ -432,7 +429,7 @@ export default function MeeIlluMeeIstamPage() {
                       sizes="(max-width: 768px) 100vw, 300px"
                     />
                   </div>
-                  <div className="p-3.5 space-y-1">
+                  <div className="p-3 sm:p-3.5 space-y-1 flex flex-col justify-between flex-1">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-[#C85A32]">
                       {style.tag}
                     </span>
@@ -447,7 +444,7 @@ export default function MeeIlluMeeIstamPage() {
               ))}
             </div>
 
-            <p className="mt-6 text-center text-xs text-slate-600 font-medium">
+            <p className="mt-4 sm:mt-6 text-center text-xs text-slate-600 font-medium">
               Traditional, contemporary, or minimalist — the design is yours to choose.
             </p>
 
@@ -455,9 +452,8 @@ export default function MeeIlluMeeIstamPage() {
             <VillaGallery whatsapp={HOUSE_AD.whatsapp} />
           </div>
 
-
-          {/* Page 4 Terracotta Footer Bar */}
-          <div className="bg-[#C85A32] text-white px-6 sm:px-10 py-3.5 flex items-center justify-between font-bold text-xs sm:text-sm">
+          {/* Page 4 Terracotta Footer Bar (Flexbox) */}
+          <div className="bg-[#C85A32] text-white px-4 sm:px-10 py-3 sm:py-3.5 flex items-center justify-between flex-wrap gap-2 font-bold text-xs sm:text-sm">
             <a href={`tel:${HOUSE_AD.phoneRaw}`} className="hover:underline flex items-center gap-2">
               <span>📞</span>
               <span>{HOUSE_AD.phone}</span>
@@ -473,11 +469,11 @@ export default function MeeIlluMeeIstamPage() {
            ======================================================== */}
         <section
           id="page-5"
-          className="relative overflow-hidden rounded-3xl border border-white/15 bg-[#0D121F] text-white shadow-2xl flex flex-col justify-between"
+          className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/15 bg-[#0D121F] text-white shadow-2xl flex flex-col justify-between"
         >
-          {/* Top Bar on Page 5 */}
-          <div className="flex items-center justify-between px-6 sm:px-10 pt-6 sm:pt-8">
-            <span className="text-sm sm:text-base font-serif font-black tracking-[0.25em] text-[#D4AF37] uppercase">
+          {/* Top Bar on Page 5 (Flexbox) */}
+          <div className="flex items-center justify-between px-4 sm:px-10 pt-4 sm:pt-8">
+            <span className="text-xs sm:text-base font-serif font-black tracking-[0.2em] sm:tracking-[0.25em] text-[#D4AF37] uppercase">
               KEESARA.CITY
             </span>
             <span className="rounded-md bg-white/10 px-2.5 py-0.5 text-[11px] font-mono font-bold text-slate-200">
@@ -485,10 +481,10 @@ export default function MeeIlluMeeIstamPage() {
             </span>
           </div>
 
-          {/* Center Logo & Title */}
-          <div className="px-6 sm:px-10 pt-4 text-center space-y-4">
+          {/* Center Logo & Title (Flexbox) */}
+          <div className="px-4 sm:px-10 pt-4 text-center space-y-3 sm:space-y-4 flex flex-col items-center">
             <div className="flex justify-center">
-              <div className="relative w-40 sm:w-48 h-16 sm:h-20">
+              <div className="relative w-36 sm:w-48 h-14 sm:h-20">
                 <Image
                   src={HOUSE_AD.logoImage}
                   alt="మీ ఇల్లు మీ ఇష్టం"
@@ -498,24 +494,22 @@ export default function MeeIlluMeeIstamPage() {
               </div>
             </div>
 
-            <div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight font-sans">
-                Contact for Layout
-                <br />
-                & Available Plots
+            <div className="space-y-1">
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight font-sans">
+                Contact for Layout & Available Plots
               </h2>
-              <p className="mt-2 text-xs sm:text-sm text-slate-300 max-w-md mx-auto">
+              <p className="mt-1.5 text-xs sm:text-sm text-slate-300 max-w-md mx-auto">
                 Walk the site, see the plots, hold your place at Hyderabad&apos;s fastest-growing urban extension.
               </p>
             </div>
           </div>
 
-          {/* White Contact Info Card (Matching PDF Page 5) */}
-          <div className="px-6 sm:px-10 py-6">
-            <div className="rounded-2xl bg-white p-6 sm:p-8 text-slate-900 shadow-xl space-y-6">
+          {/* White Contact Info Card (Flexbox Layout) */}
+          <div className="px-4 sm:px-10 py-4 sm:py-6">
+            <div className="rounded-2xl bg-white p-4 sm:p-8 text-slate-900 shadow-xl space-y-4 sm:space-y-6 flex flex-col">
               
-              <div className="space-y-4 text-left">
-                <div className="border-b border-slate-100 pb-3">
+              <div className="space-y-3 sm:space-y-4 text-left flex flex-col">
+                <div className="border-b border-slate-100 pb-2.5 sm:pb-3">
                   <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">
                     WEBSITE
                   </span>
@@ -524,7 +518,7 @@ export default function MeeIlluMeeIstamPage() {
                   </a>
                 </div>
 
-                <div className="border-b border-slate-100 pb-3">
+                <div className="border-b border-slate-100 pb-2.5 sm:pb-3">
                   <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">
                     CALL
                   </span>
@@ -537,7 +531,7 @@ export default function MeeIlluMeeIstamPage() {
                   <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">
                     EMAIL
                   </span>
-                  <a href={`mailto:${HOUSE_AD.email}`} className="text-sm sm:text-base font-bold text-slate-900 hover:text-[#C85A32]">
+                  <a href={`mailto:${HOUSE_AD.email}`} className="text-sm sm:text-base font-bold text-slate-900 hover:text-[#C85A32] break-all">
                     {HOUSE_AD.email}
                   </a>
                 </div>
@@ -548,11 +542,11 @@ export default function MeeIlluMeeIstamPage() {
                 <span>HUDA / HMDA Approved Layout</span>
               </div>
 
-              {/* Action Buttons */}
-              <div className="grid gap-3 sm:grid-cols-2">
+              {/* Action Buttons (Flexbox) */}
+              <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
                 <a
                   href={`tel:${HOUSE_AD.phoneRaw}`}
-                  className="flex items-center justify-center rounded-xl bg-[#C85A32] px-6 py-3.5 text-sm font-bold text-white shadow-md hover:bg-[#b54f2a] transition-colors"
+                  className="flex-1 flex items-center justify-center rounded-xl bg-[#C85A32] px-4 py-3 sm:py-3.5 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-[#b54f2a] transition-colors text-center"
                 >
                   Call Now / Book a Visit
                 </a>
@@ -560,7 +554,7 @@ export default function MeeIlluMeeIstamPage() {
                   href={`https://wa.me/${HOUSE_AD.whatsapp}?text=Hi%20Keesara%20City,%20I%20would%20like%20to%20book%20a%20site%20visit%20to%20KVR%20Landmark-2.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center rounded-xl bg-[#25D366] px-6 py-3.5 text-sm font-bold text-white shadow-md hover:bg-[#20ba5a] transition-colors"
+                  className="flex-1 flex items-center justify-center rounded-xl bg-[#25D366] px-4 py-3 sm:py-3.5 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-[#20ba5a] transition-colors text-center"
                 >
                   WhatsApp Booking
                 </a>
@@ -570,8 +564,8 @@ export default function MeeIlluMeeIstamPage() {
           </div>
 
           {/* Interactive Consultation Form embedded */}
-          <div className="px-6 sm:px-10 pb-8">
-            <div className="mt-4">
+          <div className="px-4 sm:px-10 pb-6 sm:pb-8">
+            <div className="mt-2 sm:mt-4">
               <ConsultationForm
                 phone={HOUSE_AD.phone}
                 phoneRaw={HOUSE_AD.phoneRaw}
@@ -582,14 +576,14 @@ export default function MeeIlluMeeIstamPage() {
             </div>
           </div>
 
-          {/* Page 5 Terracotta Footer Bar */}
-          <div className="bg-[#C85A32] text-white px-6 sm:px-10 py-3.5 flex items-center justify-between font-bold text-xs sm:text-sm">
+          {/* Page 5 Terracotta Footer Bar (Flexbox) */}
+          <div className="bg-[#C85A32] text-white px-4 sm:px-10 py-3 sm:py-3.5 flex items-center justify-between flex-wrap gap-2 font-bold text-xs sm:text-sm">
             <a href={`tel:${HOUSE_AD.phoneRaw}`} className="hover:underline flex items-center gap-2">
               <span>📞</span>
               <span>{HOUSE_AD.phone}</span>
             </a>
-            <div className="flex items-center gap-3">
-              <span className="text-xs font-normal text-white/90">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <span className="text-[11px] sm:text-xs font-normal text-white/90">
                 Digital Partner —{" "}
                 <a href="https://www.dandora.online" target="_blank" rel="noopener noreferrer" className="underline font-bold">
                   www.dandora.online

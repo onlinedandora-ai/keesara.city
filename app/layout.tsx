@@ -30,6 +30,17 @@ export const metadata: Metadata = {
   description: SITE.description,
   authors: [{ name: SITE.brand }],
   publisher: SITE.brand,
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: ["/favicon.ico"],
+  },
   openGraph: {
     title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
@@ -39,11 +50,20 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/mee-illu-mee-istam/hero-tagged.jpg",
+        url: `${SITE.url}/images/mee-illu-mee-istam/hero-tagged.jpg`,
+        secureUrl: `${SITE.url}/images/mee-illu-mee-istam/hero-tagged.jpg`,
         width: 1024,
         height: 576,
         type: "image/jpeg",
         alt: "Keesara.city — మీ ఇల్లు మీ ఇష్టం",
+      },
+      {
+        url: `${SITE.url}/og-image.jpg`,
+        secureUrl: `${SITE.url}/og-image.jpg`,
+        width: 1024,
+        height: 576,
+        type: "image/jpeg",
+        alt: "Keesara.city",
       },
     ],
   },
@@ -51,7 +71,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
-    images: ["/images/mee-illu-mee-istam/hero-tagged.jpg"],
+    images: [`${SITE.url}/images/mee-illu-mee-istam/hero-tagged.jpg`],
   },
 };
 
@@ -63,6 +83,16 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${poppins.variable} ${merriweather.variable} h-full`}>
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon.png" type="image/png" sizes="512x512" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+        <meta property="og:image" content={`${SITE.url}/images/mee-illu-mee-istam/hero-tagged.jpg`} />
+        <meta property="og:image:secure_url" content={`${SITE.url}/images/mee-illu-mee-istam/hero-tagged.jpg`} />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1024" />
+        <meta property="og:image:height" content="576" />
+        <meta property="og:image:alt" content="Keesara.city — మీ ఇల్లు మీ ఇష్టం" />
+        <meta name="twitter:image" content={`${SITE.url}/images/mee-illu-mee-istam/hero-tagged.jpg`} />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark');}}catch(e){}})()`,
