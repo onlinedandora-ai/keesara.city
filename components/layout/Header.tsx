@@ -18,15 +18,15 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-20 border-b border-line bg-paper/92 backdrop-blur-sm">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 md:py-4">
+    <header className="sticky top-0 z-20 w-full border-b border-line bg-paper/92 backdrop-blur-sm">
+      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-3 py-3 sm:px-6 md:py-4">
         <Link href="/" className="flex shrink-0 items-center gap-2 text-xl font-bold text-teal-900">
           <span className="inline-block h-2.5 w-2.5 rounded-full bg-amber-500" />
           <span>{SITE.name}</span>
         </Link>
 
         {/* Mobile Sun/Moon theme toggle button */}
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex shrink-0 items-center gap-2 md:hidden">
           <ThemeToggle showLabel={false} />
         </div>
 
@@ -79,7 +79,7 @@ export function Header() {
       </nav>
 
       {isHome && (
-        <div className="border-t border-line px-4 pb-3 sm:px-6 md:hidden">
+        <div className="w-full border-t border-line px-3 pb-3 pt-2 sm:px-6 md:hidden">
           <SearchBar />
         </div>
       )}

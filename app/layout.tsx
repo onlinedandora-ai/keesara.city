@@ -99,10 +99,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col antialiased">
+      <body className="min-h-full w-full overflow-x-hidden flex flex-col antialiased">
         <AppProvider>
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 w-full overflow-x-hidden">{children}</main>
           <Footer />
           <Suspense fallback={null}>
             <MobileNav />

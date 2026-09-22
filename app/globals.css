@@ -52,6 +52,13 @@
   --font-serif: var(--font-merriweather);
 }
 
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+}
+
 body {
   background: var(--paper);
   color: var(--ink);

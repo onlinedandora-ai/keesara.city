@@ -29,15 +29,15 @@ export function TopBannerAd() {
           </div>
 
           {/* Click Callout Strip */}
-          <div className="flex w-full items-center justify-between bg-gradient-to-r from-amber-900 via-stone-900 to-amber-950 px-3.5 sm:px-4 py-2 text-white text-xs sm:text-sm">
-            <div className="flex items-center gap-2 truncate">
-              <span className="font-bold text-amber-300">మీ ఇల్లు మీ ఇష్టం</span>
+          <div className="flex w-full items-center justify-between gap-2 bg-gradient-to-r from-amber-900 via-stone-900 to-amber-950 px-3 sm:px-4 py-2 text-white text-xs sm:text-sm">
+            <div className="flex min-w-0 items-center gap-2 truncate">
+              <span className="shrink-0 font-bold text-amber-300">మీ ఇల్లు మీ ఇష్టం</span>
               <span className="text-white/40 hidden sm:inline">•</span>
               <span className="text-stone-300 text-xs hidden sm:inline truncate">
                 300m from ORR Exit 8 | 320+ Open Plots | Custom Construction
               </span>
             </div>
-            <span className="inline-flex items-center gap-1 font-bold text-amber-400 group-hover:text-amber-300 text-xs shrink-0 group-hover:underline">
+            <span className="inline-flex shrink-0 items-center gap-1 font-bold text-amber-400 group-hover:text-amber-300 text-[11px] sm:text-xs group-hover:underline">
               View Layout & Brochure <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </span>
           </div>
