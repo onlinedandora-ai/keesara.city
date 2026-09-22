@@ -75,10 +75,10 @@ export function MasterPlanSection() {
         </div>
 
         {/* Master Plan Main Showcase Card */}
-        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-amber-500/30 bg-white dark:bg-slate-900 shadow-xl transition-all">
+        <div className="flex flex-col overflow-hidden rounded-2xl sm:rounded-3xl border border-amber-500/30 bg-white dark:bg-slate-900 shadow-xl transition-all">
           
-          {/* Top Quick Status Ribbon */}
-          <div className="flex flex-wrap items-center justify-between gap-3 bg-gradient-to-r from-amber-900 via-stone-900 to-amber-950 px-4 sm:px-6 py-3 text-white text-xs sm:text-sm">
+          {/* Top Quick Status Ribbon (Flexbox) */}
+          <div className="flex flex-wrap items-center justify-between gap-3 bg-gradient-to-r from-amber-950 via-stone-900 to-amber-950 px-4 sm:px-6 py-3 text-white text-xs sm:text-sm border-b border-amber-500/20">
             <div className="flex items-center gap-2 font-bold">
               <span className="text-amber-400">Master Layout Map</span>
               <span className="text-white/40">•</span>
@@ -96,42 +96,40 @@ export function MasterPlanSection() {
             </div>
           </div>
 
-          {/* Map Image Container with Interactive Click-to-Enlarge */}
+          {/* Map Image Container with Interactive Click-to-Enlarge (Clean Flexbox, Exact 1024/700 Aspect Ratio) */}
           <div
             onClick={() => setIsModalOpen(true)}
-            className="group relative w-full cursor-zoom-in bg-slate-950/5 dark:bg-slate-950 flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-hidden select-none"
+            className="group relative flex w-full aspect-[1024/700] cursor-zoom-in items-center justify-center overflow-hidden bg-[#88b66e] dark:bg-slate-950 select-none"
             title="Click to view layout in full screen HD mode"
           >
-            <div className="relative w-full aspect-[16/10] sm:aspect-[16/10] max-h-[600px] overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-900">
-              <Image
-                src={HOUSE_AD.masterLayoutImage}
-                alt="320+ Luxury Gated Community Open Plots Master Layout Plan — KVR Landmark-2 @ Keesara"
-                fill
-                className="object-contain object-center transition-transform duration-500 group-hover:scale-[1.02]"
-                priority
-                sizes="(max-width: 1200px) 100vw, 1200px"
-              />
+            <Image
+              src={HOUSE_AD.masterLayoutImage}
+              alt="320+ Luxury Gated Community Open Plots Master Layout Plan — KVR Landmark-2 @ Keesara"
+              fill
+              className="object-cover sm:object-contain object-center transition-transform duration-500 group-hover:scale-[1.01]"
+              priority
+              sizes="(max-width: 1200px) 100vw, 1200px"
+            />
 
-              {/* Top-Right Click-to-Zoom Indicator */}
-              <div className="absolute right-3 top-3 z-10 flex items-center gap-1.5 rounded-full bg-black/75 px-3 py-1.5 text-xs font-bold text-white backdrop-blur-md border border-white/20 shadow-lg transition-transform group-hover:scale-105">
-                <span className="text-amber-400">🔍</span>
-                <span>Click for HD Full Screen</span>
-              </div>
+            {/* Top-Right Click-to-Zoom Indicator */}
+            <div className="absolute right-3 top-3 z-10 flex items-center gap-1.5 rounded-full bg-black/75 px-3 py-1.5 text-xs font-bold text-white backdrop-blur-md border border-white/20 shadow-lg transition-transform group-hover:scale-105">
+              <span className="text-amber-400">🔍</span>
+              <span>Click for HD Full Screen</span>
+            </div>
 
-              {/* Bottom Subtle Overlay Callout */}
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 text-white opacity-90 transition-opacity group-hover:opacity-100 flex flex-wrap items-end justify-between gap-2">
-                <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-amber-300">
-                    KVR Landmark-2 • HMDA Approved
-                  </span>
-                  <p className="text-xs sm:text-sm text-slate-200 font-medium">
-                    320+ Gated Community Plots • Grand Entrance Arch • Wide 40&apos; & 30&apos; Blacktop Roads
-                  </p>
-                </div>
-                <span className="text-xs font-bold text-amber-400 underline underline-offset-2">
-                  Open Interactive Map →
+            {/* Bottom Overlay Callout (Flexbox Layout) */}
+            <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-2 bg-gradient-to-t from-black/85 via-black/50 to-transparent p-4 sm:p-5 text-white">
+              <div className="flex flex-col gap-0.5">
+                <span className="text-xs font-bold uppercase tracking-wider text-amber-300">
+                  KVR Landmark-2 • HMDA Approved
                 </span>
+                <p className="text-xs sm:text-sm text-slate-200 font-medium">
+                  320+ Gated Community Plots • Grand Entrance Arch • Wide 40&apos; & 30&apos; Blacktop Roads
+                </p>
               </div>
+              <span className="inline-flex items-center gap-1 text-xs font-bold text-amber-400 group-hover:text-amber-300 underline underline-offset-2 transition-colors">
+                Open Interactive Map →
+              </span>
             </div>
           </div>
 

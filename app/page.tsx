@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   getBusinesses,
   getJournalPosts,
@@ -13,6 +14,35 @@ import { LocalNews } from "@/components/home/LocalNews";
 import { MasterPlanSection } from "@/components/home/MasterPlanSection";
 import { NewsFeed } from "@/components/home/NewsFeed";
 import { TopBannerAd } from "@/components/home/TopBannerAd";
+import { SITE } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: `${SITE.name} — ${SITE.tagline}`,
+  description: SITE.description,
+  openGraph: {
+    title: `${SITE.name} — ${SITE.tagline}`,
+    description: SITE.description,
+    url: SITE.url,
+    siteName: SITE.name,
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: "/images/mee-illu-mee-istam/hero-tagged.jpg",
+        width: 1024,
+        height: 576,
+        type: "image/jpeg",
+        alt: "Keesara.city — మీ ఇల్లు మీ ఇష్టం",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE.name} — ${SITE.tagline}`,
+    description: SITE.description,
+    images: ["/images/mee-illu-mee-istam/hero-tagged.jpg"],
+  },
+};
 
 export const revalidate = 60;
 
@@ -42,5 +72,3 @@ export default async function HomePage() {
     </>
   );
 }
-
-

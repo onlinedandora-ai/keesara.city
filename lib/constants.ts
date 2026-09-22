@@ -43,8 +43,8 @@ export const HOUSE_AD = {
   title: "మీ ఇల్లు మీ ఇష్టం — KVR Landmark-2 @ Keesara",
   description: "HMDA-approved 25.5 Acres gated layout with 320+ plots just 300m from ORR Exit 8. Custom architecture & construction built to your exact taste.",
   href: "/mee-illu-mee-istam",
-  bannerImage: "/images/mee-illu-mee-istam/banner-landscape.jpg",
-  heroImage: "/images/mee-illu-mee-istam/hero-square.jpg",
+  bannerImage: "/images/mee-illu-mee-istam/hero-tagged.jpg",
+  heroImage: "/images/mee-illu-mee-istam/hero-tagged.jpg",
   logoImage: "/images/mee-illu-mee-istam/mee-illu-logo.png",
   aerialMapImage: "/images/mee-illu-mee-istam/exit8-aerial-map.jpg",
   masterLayoutImage: "/images/mee-illu-mee-istam/master-layout-plan.jpg",
@@ -210,7 +210,11 @@ export const ALL_VILLA_DESIGNS = [
 export const SITE = {
   name: process.env.NEXT_PUBLIC_SITE_NAME || "keesara.city",
   domain: "keesara.city",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://keesara.city",
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL &&
+    !process.env.NEXT_PUBLIC_SITE_URL.includes("localhost")
+      ? process.env.NEXT_PUBLIC_SITE_URL
+      : "https://keesara.city",
   tagline: "Keesara, Telangana — local & unfiltered",
   description:
     "The local journal and business directory built for Keesara.",

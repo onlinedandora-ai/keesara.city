@@ -31,17 +31,27 @@ export const metadata: Metadata = {
   authors: [{ name: SITE.brand }],
   publisher: SITE.brand,
   openGraph: {
-    title: SITE.name,
+    title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
     url: SITE.url,
     siteName: SITE.name,
     locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: "/images/mee-illu-mee-istam/hero-tagged.jpg",
+        width: 1024,
+        height: 576,
+        type: "image/jpeg",
+        alt: "Keesara.city — మీ ఇల్లు మీ ఇష్టం",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: SITE.name,
+    title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
+    images: ["/images/mee-illu-mee-istam/hero-tagged.jpg"],
   },
 };
 

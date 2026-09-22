@@ -19,7 +19,26 @@ export const metadata: Metadata = {
     title: "Keesara.city — KVR Landmark-2 @ Keesara",
     description:
       "Buy your plot and get it constructed as you like. Just 300m from ORR Exit 8. 320+ Open Plots.",
-    images: ["/images/mee-illu-mee-istam/villa-minimalist.jpg"],
+    url: "https://keesara.city/mee-illu-mee-istam",
+    siteName: "Keesara.city",
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: "/images/mee-illu-mee-istam/hero-tagged.jpg",
+        width: 1024,
+        height: 576,
+        type: "image/jpeg",
+        alt: "Keesara.city — మీ ఇల్లు మీ ఇష్టం",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Keesara.city — KVR Landmark-2 @ Keesara",
+    description:
+      "Buy your plot and get it constructed as you like. Just 300m from ORR Exit 8. 320+ Open Plots.",
+    images: ["/images/mee-illu-mee-istam/hero-tagged.jpg"],
   },
 };
 
@@ -54,7 +73,7 @@ export default function MeeIlluMeeIstamPage() {
           {/* Hero Image Showcase */}
           <div className="relative mt-6 sm:mt-8 aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden border-y border-white/10 bg-slate-900">
             <Image
-              src="/images/mee-illu-mee-istam/villa-minimalist.jpg"
+              src="/images/mee-illu-mee-istam/hero-tagged.jpg"
               alt="Buy your plot and get it constructed as you like — Keesara.city"
               fill
               className="object-cover object-center"
@@ -312,12 +331,12 @@ export default function MeeIlluMeeIstamPage() {
               </p>
             </div>
 
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-slate-300 shadow-md bg-slate-900">
+            <div className="relative aspect-[1024/700] w-full overflow-hidden rounded-2xl border border-slate-300 shadow-md bg-[#88b66e] dark:bg-slate-900">
               <Image
                 src={HOUSE_AD.masterLayoutImage}
                 alt="320+ Luxury Gated Community Open Plots Master Layout Map"
                 fill
-                className="object-contain object-center"
+                className="object-cover sm:object-contain object-center"
                 sizes="(max-width: 1024px) 100vw, 896px"
               />
             </div>

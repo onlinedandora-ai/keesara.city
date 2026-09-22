@@ -21,8 +21,8 @@ export function TopBannerAd() {
               src={HOUSE_AD.bannerImage}
               alt="మీ ఇల్లు మీ ఇష్టం — Keesara Builders & Developers"
               width={1024}
-              height={394}
-              className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.01]"
+              height={576}
+              className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.01]"
               priority
               sizes="(max-width: 768px) 100vw, 896px"
             />
