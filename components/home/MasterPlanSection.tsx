@@ -8,23 +8,31 @@ import { HOUSE_AD } from "@/lib/constants";
 export function MasterPlanSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
-  const [activeTab, setActiveTab] = useState<"all" | "parks" | "roads" | "amenities">("all");
   const modalContentRef = useRef<HTMLDivElement>(null);
+
+  const handleOpenModal = () => {
+    setZoomLevel(1);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setZoomLevel(1);
+  };
 
   // Close modal on Escape key press
   useEffect(() => {
+    if (!isModalOpen) return;
+
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") {
-        setIsModalOpen(false);
+        handleCloseModal();
       }
     }
-    if (isModalOpen) {
-      document.body.style.overflow = "hidden";
-      window.addEventListener("keydown", handleKeyDown);
-    } else {
-      document.body.style.overflow = "auto";
-      setZoomLevel(1);
-    }
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
     return () => {
       document.body.style.overflow = "auto";
       window.removeEventListener("keydown", handleKeyDown);
@@ -56,7 +64,7 @@ export function MasterPlanSection() {
 
           <div className="flex flex-wrap items-center gap-2.5 shrink-0">
             <button
-              onClick={() => setIsModalOpen(true)}
+              onClick={handleOpenModal}
               className="inline-flex items-center gap-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs sm:text-sm px-4 py-2.5 shadow-sm transition-all hover:shadow-md cursor-pointer"
             >
               <span>🔍</span>
@@ -98,7 +106,7 @@ export function MasterPlanSection() {
 
           {/* Map Image Container with Interactive Click-to-Enlarge (Clean Flexbox, Exact 1024/700 Aspect Ratio) */}
           <div
-            onClick={() => setIsModalOpen(true)}
+            onClick={handleOpenModal}
             className="group relative flex w-full aspect-[1024/700] cursor-zoom-in items-center justify-center overflow-hidden bg-[#88b66e] dark:bg-slate-950 select-none"
             title="Click to view layout in full screen HD mode"
           >
@@ -323,7 +331,7 @@ export function MasterPlanSection() {
               </Link>
 
               <button
-                onClick={() => setIsModalOpen(false)}
+                onClick={handleCloseModal}
                 className="rounded-lg bg-white/10 hover:bg-white/20 px-3 py-1.5 text-sm font-bold text-white transition-colors cursor-pointer"
                 title="Close (Esc)"
               >

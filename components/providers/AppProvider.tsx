@@ -46,11 +46,16 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   // Read theme preference client-side after mount to avoid SSR hydration mismatch
   useEffect(() => {
     const saved = localStorage.getItem("theme") as "light" | "dark" | null;
-    if (saved === "dark" || saved === "light") {
-      setThemeState(saved);
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setThemeState("dark");
-    }
+    const initialTheme: "light" | "dark" =
+      saved === "dark" || saved === "light"
+        ? saved
+        : window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+
+    queueMicrotask(() => {
+      setThemeState(initialTheme);
+    });
   }, []);
 
   // Sync DOM dark class when theme changes
